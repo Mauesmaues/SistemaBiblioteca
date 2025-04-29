@@ -31,8 +31,8 @@ public class LivroController {
                 .findFirst();
     }
 
-    public Optional<Livro> pesquisarLivroAutor(String autor){
-        return this.livro.stream().filter(l -> l.getAutor().equals(autor)).findFirst();
+    public List<Livro> pesquisarLivroAutor(String autor){
+        return this.livro.stream().filter(l -> l.getAutor().equals(autor)).collect(Collectors.toList());
     }
 
     /*public Optional<Livro> pesquisarLivroCategoria(String categoria){
