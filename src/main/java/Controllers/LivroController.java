@@ -32,7 +32,16 @@ public class LivroController {
     }
 
     public List<Livro> pesquisarLivroAutor(String autor){
-        return this.livro.stream().filter(l -> l.getAutor().equals(autor)).collect(Collectors.toList());
+        return this.livro.stream().filter(l -> l.getAutor().getNome().equals(autor)).collect(Collectors.toList());
+    }
+
+    public int buscarUltimoId(){
+        int ultimoId = 0;
+        for(Livro livro : this.livro){
+            ultimoId = livro.getId();
+        }
+        System.out.println("ultimo id:" + ultimoId);
+        return ultimoId;
     }
 
     /*public Optional<Livro> pesquisarLivroCategoria(String categoria){
