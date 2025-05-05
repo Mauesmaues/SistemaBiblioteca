@@ -25,6 +25,10 @@ public class AutorController {
         autors.add(autor);
     }
 
+    public void excluirAutor(Autors autor) {
+        autors.remove(autor);
+    }
+
     public Optional<Autors> getAutor(String nomeAutor) {
         for (Autors autor : autors) {
             if (autor.getNome().equals(nomeAutor)) {
