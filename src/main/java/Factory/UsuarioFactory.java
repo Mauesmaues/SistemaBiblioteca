@@ -14,4 +14,6 @@ public class UsuarioFactory {
         Usuario usuario = new Usuario(nome, telefone, endereco, email);
         usuarioController.adicionarUsuario(usuario);
     }
+
+    public void buscarUsuario(int id) {}
 }

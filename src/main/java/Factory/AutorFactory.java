@@ -8,6 +8,7 @@ import enums.StatusAutor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 public class AutorFactory {
@@ -19,7 +20,7 @@ public class AutorFactory {
 
     public void criarAutor(String nome, String dataNasc, String nacionalidade, String status) {
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Autors autor = new Autors(nome, data, nacionalidade, StatusAutor.valueOf(status));
+        Autors autor = new Autors(nome.toUpperCase(), data, nacionalidade, StatusAutor.valueOf(status));
         autorController.cadastrarAutor(autor);
     }
 
@@ -51,6 +52,10 @@ public class AutorFactory {
         }else {
             return false;
         }
+    }
+
+    public List<Autors> listarAutors(){
+        return this.autorController.getAutors();
     }
 
 

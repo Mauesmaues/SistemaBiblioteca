@@ -1,6 +1,8 @@
 package org.example;
 
+import Controllers.AutorController;
 import Controllers.LivroController;
+import Factory.AutorFactory;
 import entities.Livro;
 
 import java.lang.management.OperatingSystemMXBean;
@@ -9,11 +11,11 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        Livro livro = new Livro("diario", "marcos", LocalDate.now(), 10);
-        LivroController controller = new LivroController();
-        controller.adicionarLivro(livro);
-        Optional<Livro> livroPesq = controller.pesquisarLivroId(1);
-        System.out.println(livroPesq.get().getTitulo());
+        AutorFactory autorFactory = new AutorFactory();
+        autorFactory.criarAutor("jose", "11/11/2011", "Alemão", "ATIVO");
+
+        System.out.println(autorFactory.listarAutors());
+        System.out.println(autorFactory.buscarAutor("jose"));
 
     }
 }
