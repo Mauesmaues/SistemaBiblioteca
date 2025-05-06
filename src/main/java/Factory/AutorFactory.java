@@ -32,5 +32,26 @@ public class AutorFactory {
         }
     }
 
+    public void alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
+        Optional<Autors> autor = autorController.getAutor(nome);
+        LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        if (autor.isPresent()) {
+            autor.get().setNacionalidade(nacionalidade);
+            autor.get().setDataNascimento(data);
+            autor.get().setStatusAutor(StatusAutor.valueOf(status));
+        }else{
+            System.out.println("Autor inexistente");
+        }
+    }
+
+    public boolean buscarAutor(String nome) {
+        Optional<Autors> autor = autorController.getAutor(nome);
+        if (autor.isPresent()) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 
 }
