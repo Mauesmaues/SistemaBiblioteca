@@ -1,12 +1,11 @@
 package factory;
 
-import Controllers.AutorController;
+import controllers.AutorController;
 import entities.Autor;
 import enums.StatusAutor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Optional;
 
 public class AutorFactory {
@@ -51,10 +50,4 @@ public class AutorFactory {
             return false;
         }
     }
-
-    public List<Autor> listarAutors(){
-        return this.autorController.getAutors();
-    }
-
-
 }

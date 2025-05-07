@@ -1,6 +1,6 @@
 package factory;
 
-import Controllers.LivroController;
+import controllers.LivroController;
 
 public class LivroFactory {
     private LivroController livroController;

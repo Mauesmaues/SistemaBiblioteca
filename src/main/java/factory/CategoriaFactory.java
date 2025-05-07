@@ -1,6 +1,6 @@
 package factory;
 
-import Controllers.CategoriaController;
+import controllers.CategoriaController;
 import entities.Categoria;
 
 import java.util.List;

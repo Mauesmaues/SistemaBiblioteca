@@ -1,6 +1,6 @@
 package factory;
 
-import Controllers.UsuarioController;
+import controllers.UsuarioController;
 import entities.Usuario;
 
 public class UsuarioFactory {
