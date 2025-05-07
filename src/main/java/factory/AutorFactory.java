@@ -1,12 +1,10 @@
-package Factory;
+package factory;
 
 import Controllers.AutorController;
-import entities.Autors;
-import enums.Status;
+import entities.Autor;
 import enums.StatusAutor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -20,12 +18,12 @@ public class AutorFactory {
 
     public void criarAutor(String nome, String dataNasc, String nacionalidade, String status) {
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Autors autor = new Autors(nome.toUpperCase(), data, nacionalidade, StatusAutor.valueOf(status));
+        Autor autor = new Autor(nome.toUpperCase(), data, nacionalidade, StatusAutor.valueOf(status));
         autorController.cadastrarAutor(autor);
     }
 
     public void excluirAutor(String nome) {
-        Optional<Autors> autor = autorController.getAutor(nome);
+        Optional<Autor> autor = autorController.getAutor(nome);
         if (autor.isPresent()) {
             autorController.excluirAutor(autor.get());
         }else{
@@ -34,7 +32,7 @@ public class AutorFactory {
     }
 
     public void alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        Optional<Autors> autor = autorController.getAutor(nome);
+        Optional<Autor> autor = autorController.getAutor(nome);
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         if (autor.isPresent()) {
             autor.get().setNacionalidade(nacionalidade);
@@ -46,7 +44,7 @@ public class AutorFactory {
     }
 
     public boolean buscarAutor(String nome) {
-        Optional<Autors> autor = autorController.getAutor(nome);
+        Optional<Autor> autor = autorController.getAutor(nome);
         if (autor.isPresent()) {
             return true;
         }else {
@@ -54,7 +52,7 @@ public class AutorFactory {
         }
     }
 
-    public List<Autors> listarAutors(){
+    public List<Autor> listarAutors(){
         return this.autorController.getAutors();
     }
 

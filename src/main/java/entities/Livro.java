@@ -1,17 +1,16 @@
 package entities;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Livro {
     private String titulo;
-    private Autors autor;
+    private Autor autor;
     private LocalDate anoDePublicacao;
     private int exemplaresDisponiveis;
     private Categoria categoria;
     private int id = 0;
 
-    public Livro(String titulo, Autors autor, LocalDate anoDePublicacao, int exemplaresDisponiveis, int ultimoId, Categoria categoria) {
+    public Livro(String titulo, Autor autor, LocalDate anoDePublicacao, int exemplaresDisponiveis, int ultimoId, Categoria categoria) {
         this.titulo = titulo;
         this.autor = autor;
         this.anoDePublicacao = anoDePublicacao;
@@ -36,11 +35,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Autors getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(Autors autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 

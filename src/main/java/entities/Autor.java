@@ -4,13 +4,13 @@ import enums.StatusAutor;
 
 import java.time.LocalDate;
 
-public class Autors {
+public class Autor {
     private String nome;
     private LocalDate dataNascimento;
     private String nacionalidade;
     private StatusAutor statusAutor;
 
-    public Autors(String nome, LocalDate dataNascimento, String nacionalidade, StatusAutor statusAutor) {
+    public Autor(String nome, LocalDate dataNascimento, String nacionalidade, StatusAutor statusAutor) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;

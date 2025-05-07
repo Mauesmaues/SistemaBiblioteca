@@ -1,40 +1,40 @@
 package Controllers;
 
-import entities.Autors;
+import entities.Autor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class AutorController {
-    List<Autors> autors;
+    private List<Autor> autors;
 
     public AutorController() {
-        autors = new ArrayList<Autors>();
+        autors = new ArrayList<Autor>();
     }
 
-    public List<Autors> getAutors() {
-        return autors;
-    }
 
-    public void setAutors(List<Autors> autors) {
-        this.autors = autors;
-    }
+    public void cadastrarAutor(Autor autor) {
 
-    public void cadastrarAutor(Autors autor) {
         autors.add(autor);
     }
 
-    public void excluirAutor(Autors autor) {
+    public void excluirAutor(Autor autor) {
         autors.remove(autor);
     }
 
-    public Optional<Autors> getAutor(String nomeAutor) {
-        for (Autors autor : autors) {
+    //public void ordenarAutors(){
+    //    Collections.sort(autors);
+    //}
+
+    public Optional<Autor> getAutor(String nomeAutor) {
+        for (Autor autor : autors) {
             if (autor.getNome().equals(nomeAutor)) {
                 return Optional.of(autor);
             }
         }
         return Optional.empty();
+    }
+
+    public List<String> listarAutors() {
+        return autors.stream().map(autor -> autor.getNome()).toList();
     }
 }

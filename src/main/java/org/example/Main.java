@@ -1,13 +1,6 @@
 package org.example;
 
-import Controllers.AutorController;
-import Controllers.LivroController;
-import Factory.AutorFactory;
-import entities.Livro;
-
-import java.lang.management.OperatingSystemMXBean;
-import java.time.LocalDate;
-import java.util.Optional;
+import factory.AutorFactory;
 
 public class Main {
     public static void main(String[] args) {

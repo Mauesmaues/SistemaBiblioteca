@@ -1,7 +1,6 @@
-package Factory;
+package factory;
 
 import Controllers.LivroController;
-import entities.Livro;
 
 public class LivroFactory {
     private LivroController livroController;

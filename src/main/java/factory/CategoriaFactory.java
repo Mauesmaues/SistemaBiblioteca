@@ -1,4 +1,4 @@
-package Factory;
+package factory;
 
 import Controllers.CategoriaController;
 import entities.Categoria;
