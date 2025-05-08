@@ -2,6 +2,7 @@ package controllers;
 
 import entities.Autor;
 import enums.StatusAutor;
+import factory.AutorFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,18 +16,29 @@ public class AutorController {
     }
 
 
-    public void cadastrarAutor(Autor autor) {
-
-        autors.add(autor);
+    public String cadastrarAutor(String nome, String dataNasc, String nacionalidade, String status) {
+        if(getAutor(nome) == null) {
+            Optional<Autor> autorFactory = AutorFactory.criarAutor(nome, dataNasc, nacionalidade, status);
+            if(autorFactory.isPresent()){
+                autors.add(autorFactory.get());
+                return "Autor cadastrado com sucesso!";
+            }
+            return "Autor invalido!";
+        }
+        return "Autor ja existente!";
     }
 
-    public void excluirAutor(Autor autor) {
+    public String excluirAutor(Autor autor) {
+        if(getAutor(autor.getNome()) == null){
+            return "Autor não encontrado!";
+        }
         autors.remove(autor);
+        return "Autor excluido com sucesso!";
     }
 
-    //public void ordenarAutors(){
-    //    Collections.sort(autors);
-    //}
+    public void ordenarAutors(){
+        Collections.sort(this.autors);
+    }
 
     public Optional<Autor> getAutor(String nomeAutor) {
         for (Autor autor : autors) {
@@ -42,24 +54,17 @@ public class AutorController {
         return autors.stream().map(autor -> autor.getNome()).toList();
     }
 
-    public boolean buscarAutor(String nome) {
-        Optional<Autor> autor = getAutor(nome);
-        if (autor.isPresent()) {
-            return true;
-        }else {
-            return false;
+    public String alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
+        if(getAutor(nome) == null) {
+            return "Autor não encontrado!";
         }
-    }
-
-    public void alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
         Optional<Autor> autor = getAutor(nome);
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         if (autor.isPresent()) {
             autor.get().setNacionalidade(nacionalidade);
             autor.get().setDataNascimento(data);
             autor.get().setStatusAutor(StatusAutor.valueOf(status));
-        }else{
-            System.out.println("Autor inexistente");
         }
+        return "Autor alterado com sucesso!";
     }
 }

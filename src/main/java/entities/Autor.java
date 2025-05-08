@@ -4,7 +4,7 @@ import enums.StatusAutor;
 
 import java.time.LocalDate;
 
-public class Autor {
+public class Autor implements Comparable<Autor> {
     private String nome;
     private LocalDate dataNascimento;
     private String nacionalidade;
@@ -47,5 +47,10 @@ public class Autor {
 
     public void setStatusAutor(StatusAutor statusAutor) {
         this.statusAutor = statusAutor;
+    }
+
+    @Override
+    public int compareTo(Autor o) {
+        return this.nome.compareTo(o.getNome());
     }
 }

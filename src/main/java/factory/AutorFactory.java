@@ -7,47 +7,36 @@ import enums.StatusAutor;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
-public class AutorFactory {
-    private AutorController autorController;
+public final class AutorFactory {
 
-    public AutorFactory() {
-        autorController = new AutorController();
-    }
+        private static final AutorController autorController = new AutorController();
 
-    public void criarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Autor autor = new Autor(nome.toUpperCase(), data, nacionalidade, StatusAutor.valueOf(status));
-        autorController.cadastrarAutor(autor);
-    }
+        public static Optional<Autor> criarAutor(String nome, String dataNasc, String nacionalidade, String status){
 
-    public void excluirAutor(String nome) {
-        Optional<Autor> autor = autorController.getAutor(nome);
-        if (autor.isPresent()) {
-            autorController.excluirAutor(autor.get());
-        }else{
-            System.out.println("Autor inexistente");
+            if(nome.isEmpty() || dataNasc.isEmpty() || nacionalidade.isEmpty() || status.isEmpty()){
+                return Optional.empty();
+            }
+
+            String anoNasc = dataNasc.substring(6, 10);
+            Pattern pattern = Pattern.compile("\\d+");
+            int anoNascInt = Integer.parseInt(anoNasc);
+
+            if(pattern.matcher(anoNasc).matches()){
+                anoNascInt = Integer.parseInt(anoNasc);
+            }else{return Optional.empty();}
+
+            if(anoNascInt > LocalDate.now().minusYears(18).getYear()){
+                return Optional.empty();
+            }
+
+            if(status.toUpperCase().equals("ATIVO") || status.toUpperCase().equals("INATIVO") ){
+            }else{return Optional.empty();}
+
+            LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            Autor autor = new Autor(nome, data, nacionalidade, StatusAutor.valueOf(status.toUpperCase()));
+            return Optional.of(autor);
         }
-    }
 
-    public void alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        Optional<Autor> autor = autorController.getAutor(nome);
-        LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        if (autor.isPresent()) {
-            autor.get().setNacionalidade(nacionalidade);
-            autor.get().setDataNascimento(data);
-            autor.get().setStatusAutor(StatusAutor.valueOf(status));
-        }else{
-            System.out.println("Autor inexistente");
-        }
-    }
-
-    public boolean buscarAutor(String nome) {
-        Optional<Autor> autor = autorController.getAutor(nome);
-        if (autor.isPresent()) {
-            return true;
-        }else {
-            return false;
-        }
-    }
 }
