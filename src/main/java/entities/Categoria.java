@@ -1,23 +1,14 @@
 package entities;
 
-public class Categoria {
-    private int idCategoria;
+public class Categoria implements Comparable<Categoria>{
     private String nomeCategoria;
     private String descricaoCategoria;
 
-    public Categoria(int idCategoria, String nomeCategoria, String descricaoCategoria) {
-        this.idCategoria = idCategoria;
+    public Categoria(String nomeCategoria, String descricaoCategoria) {
         this.nomeCategoria = nomeCategoria;
         this.descricaoCategoria = descricaoCategoria;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
 
     public String getNomeCategoria() {
         return nomeCategoria;
@@ -33,5 +24,10 @@ public class Categoria {
 
     public void setDescricaoCategoria(String descricaoCategoria) {
         this.descricaoCategoria = descricaoCategoria;
+    }
+
+    @Override
+    public int compareTo(Categoria o) {
+        return this.nomeCategoria.compareTo(o.getNomeCategoria());
     }
 }

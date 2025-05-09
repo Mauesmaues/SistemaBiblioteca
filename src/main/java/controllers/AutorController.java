@@ -17,8 +17,8 @@ public class AutorController {
 
 
     public String cadastrarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(getAutor(nome).isEmpty()) {
-            Optional<Autor> autorFactory = AutorFactory.criarAutor(nome, dataNasc, nacionalidade, status);
+        if(buscarAutor(nome).isEmpty()) {
+            Optional<Autor> autorFactory = AutorFactory.criarAutor(nome, dataNasc, nacionalidade, status.toUpperCase());
             if(autorFactory.isPresent()){
                 autors.add(autorFactory.get());
                 return "Autor cadastrado com sucesso!";
@@ -28,11 +28,11 @@ public class AutorController {
         return "Autor ja existente!";
     }
 
-    public String excluirAutor(Autor autor) {
-        if(getAutor(autor.getNome()).isEmpty()){
+    public String excluirAutor(String nome) {
+        if(buscarAutor(nome).isEmpty()){
             return "Autor não encontrado!";
         }
-        autors.remove(autor);
+        autors.remove(buscarAutor(nome).get());
         return "Autor excluido com sucesso!";
     }
 
@@ -40,9 +40,9 @@ public class AutorController {
         Collections.sort(this.autors);
     }
 
-    public Optional<Autor> getAutor(String nomeAutor) {
+    public Optional<Autor> buscarAutor(String nomeAutor) {
         for (Autor autor : autors) {
-            if (autor.getNome().equals(nomeAutor)) {
+            if (autor.getNome().toUpperCase().equals(nomeAutor.toUpperCase())) {
                 return Optional.of(autor);
             }
         }
@@ -55,10 +55,10 @@ public class AutorController {
     }
 
     public String alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(getAutor(nome).isEmpty()) {
+        if(buscarAutor(nome).isEmpty()) {
             return "Autor não encontrado!";
         }
-        Optional<Autor> autor = getAutor(nome);
+        Optional<Autor> autor = buscarAutor(nome);
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         if (autor.isPresent()) {
             autor.get().setNacionalidade(nacionalidade);

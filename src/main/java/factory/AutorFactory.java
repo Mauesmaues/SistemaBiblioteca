@@ -27,8 +27,9 @@ public final class AutorFactory {
                 return Optional.empty();
             }
 
-            if(status.toUpperCase().equals("ATIVO") || status.toUpperCase().equals("INATIVO") ){
-            }else{return Optional.empty();}
+            if(!status.equals("ATIVO") && !status.equals("INATIVO") ){
+                return Optional.empty();
+            }
 
             Autor autor = new Autor(nome, data, nacionalidade, StatusAutor.valueOf(status.toUpperCase()));
             return Optional.of(autor);

@@ -53,4 +53,14 @@ public class Autor implements Comparable<Autor> {
     public int compareTo(Autor o) {
         return this.nome.compareTo(o.getNome());
     }
+
+    @Override
+    public String toString() {
+        return "Autor[" +
+                "\nNome: " + nome +
+                "\nData de nascimento:'" + dataNascimento +
+                "\nnacionalidade: '" + nacionalidade +
+                "\nstatusAutor: " + statusAutor +
+                "\n]";
+    }
 }
