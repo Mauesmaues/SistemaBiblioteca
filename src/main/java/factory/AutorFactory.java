@@ -19,22 +19,17 @@ public final class AutorFactory {
                 return Optional.empty();
             }
 
-            String anoNasc = dataNasc.substring(6, 10);
-            Pattern pattern = Pattern.compile("\\d+");
-            int anoNascInt = Integer.parseInt(anoNasc);
+            LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            int anoNascInt = (int) data.getYear();
 
-            if(pattern.matcher(anoNasc).matches()){
-                anoNascInt = Integer.parseInt(anoNasc);
-            }else{return Optional.empty();}
 
-            if(anoNascInt > LocalDate.now().minusYears(18).getYear()){
+            if(anoNascInt > LocalDate.now().getYear()){
                 return Optional.empty();
             }
 
             if(status.toUpperCase().equals("ATIVO") || status.toUpperCase().equals("INATIVO") ){
             }else{return Optional.empty();}
 
-            LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             Autor autor = new Autor(nome, data, nacionalidade, StatusAutor.valueOf(status.toUpperCase()));
             return Optional.of(autor);
         }

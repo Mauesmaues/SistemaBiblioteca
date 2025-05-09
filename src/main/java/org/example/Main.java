@@ -1,12 +1,15 @@
 package org.example;
 
-import factory.AutorFactory;
+import controllers.AutorController;
 
 public class Main {
-    public static void main(String[] args) {
-        AutorFactory autorFactory = new AutorFactory();
-        autorFactory.criarAutor("jose", "11/11/2011", "Alemão", "ATIVO");
-        System.out.println(autorFactory.buscarAutor("jose"));
+    public static void main(String[] args){
+        AutorController autorController = new AutorController();
+        String situacao = autorController.cadastrarAutor("batel", "22/08/2004", "brasileiro", "viado");
+        System.out.println(situacao);
+        System.out.println(autorController.listarAutors());
+        System.out.println(autorController.getAutor("batel").get().getNome());
+
 
     }
 }

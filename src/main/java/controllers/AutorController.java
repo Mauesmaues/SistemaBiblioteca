@@ -17,7 +17,7 @@ public class AutorController {
 
 
     public String cadastrarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(getAutor(nome) == null) {
+        if(getAutor(nome).isEmpty()) {
             Optional<Autor> autorFactory = AutorFactory.criarAutor(nome, dataNasc, nacionalidade, status);
             if(autorFactory.isPresent()){
                 autors.add(autorFactory.get());
@@ -29,7 +29,7 @@ public class AutorController {
     }
 
     public String excluirAutor(Autor autor) {
-        if(getAutor(autor.getNome()) == null){
+        if(getAutor(autor.getNome()).isEmpty()){
             return "Autor não encontrado!";
         }
         autors.remove(autor);
@@ -55,7 +55,7 @@ public class AutorController {
     }
 
     public String alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(getAutor(nome) == null) {
+        if(getAutor(nome).isEmpty()) {
             return "Autor não encontrado!";
         }
         Optional<Autor> autor = getAutor(nome);
