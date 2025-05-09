@@ -1,9 +1,8 @@
 package factory;
 
 import controllers.CategoriaController;
-import entities.Categoria;
+import model.Categoria;
 
-import java.util.List;
 import java.util.Optional;
 
 public final class CategoriaFactory {

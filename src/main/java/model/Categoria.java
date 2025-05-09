@@ -1,4 +1,4 @@
-package entities;
+package model;
 
 public class Categoria implements Comparable<Categoria>{
     private String nomeCategoria;

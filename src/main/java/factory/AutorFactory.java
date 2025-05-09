@@ -1,13 +1,12 @@
 package factory;
 
 import controllers.AutorController;
-import entities.Autor;
+import model.Autor;
 import enums.StatusAutor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 public final class AutorFactory {
 

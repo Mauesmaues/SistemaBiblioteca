@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Autor;
+import model.Autor;
 import enums.StatusAutor;
 import factory.AutorFactory;
 
@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class AutorController {
-    private List<Autor> autors;
+    private static List<Autor> autors;
 
     public AutorController() {
         autors = new ArrayList<Autor>();
@@ -40,7 +40,7 @@ public class AutorController {
         Collections.sort(this.autors);
     }
 
-    public Optional<Autor> buscarAutor(String nomeAutor) {
+    public static Optional<Autor> buscarAutor(String nomeAutor) {
         for (Autor autor : autors) {
             if (autor.getNome().toUpperCase().equals(nomeAutor.toUpperCase())) {
                 return Optional.of(autor);

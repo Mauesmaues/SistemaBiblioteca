@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Categoria;
+import model.Categoria;
 import factory.CategoriaFactory;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CategoriaController {
-    List<Categoria> listaCategoria;
+    private static List<Categoria> listaCategoria;
 
     public CategoriaController() {
         listaCategoria = new ArrayList<>();
@@ -36,7 +36,7 @@ public class CategoriaController {
         return "Categoria excluido com sucesso!";
     }
 
-    public Optional<Categoria> buscarCategoria(String nome) {
+    public static Optional<Categoria> buscarCategoria(String nome) {
         for (Categoria categoria : listaCategoria) {
             if(categoria.getNomeCategoria().equals(nome)) {
                 return Optional.of(categoria);

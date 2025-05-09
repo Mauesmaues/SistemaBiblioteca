@@ -1,14 +1,14 @@
-package entities;
+package model;
 
 import java.time.LocalDate;
 
-public class Livro {
+public class Livro implements Comparable<Livro> {
     private String titulo;
     private Autor autor;
     private LocalDate anoDePublicacao;
     private int exemplaresDisponiveis;
     private Categoria categoria;
-    private int id = 0;
+    private int id;
 
     public Livro(String titulo, Autor autor, LocalDate anoDePublicacao, int exemplaresDisponiveis, int ultimoId, Categoria categoria) {
         this.titulo = titulo;
@@ -16,7 +16,7 @@ public class Livro {
         this.anoDePublicacao = anoDePublicacao;
         this.exemplaresDisponiveis = exemplaresDisponiveis;
         this.categoria = categoria;
-        this.id = ultimoId + 1;
+        this.id = ultimoId;
     }
 
     public int getId() {
@@ -57,5 +57,10 @@ public class Livro {
 
     public void setExemplaresDisponiveis(int exemplaresDisponiveis) {
         this.exemplaresDisponiveis = exemplaresDisponiveis;
+    }
+
+    @Override
+    public int compareTo(Livro o) {
+        return this.titulo.compareTo(o.titulo);
     }
 }

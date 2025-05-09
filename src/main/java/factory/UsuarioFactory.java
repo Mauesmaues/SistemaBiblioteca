@@ -1,7 +1,7 @@
 package factory;
 
 import controllers.UsuarioController;
-import entities.Usuario;
+import model.Usuario;
 
 public class UsuarioFactory {
     private UsuarioController usuarioController;

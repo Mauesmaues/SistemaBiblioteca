@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Usuario;
+import model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
