@@ -6,7 +6,6 @@ import model.Categoria;
 import java.util.Optional;
 
 public final class CategoriaFactory {
-    private static final CategoriaController categoriaController = new CategoriaController();;
 
     public static Optional<Categoria> criarCategoria(String nomeCategoria, String descricaoCategoria) {
 

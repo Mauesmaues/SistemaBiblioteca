@@ -2,6 +2,7 @@ package org.example;
 
 import controllers.AutorController;
 import controllers.CategoriaController;
+import controllers.EmprestimoController;
 
 public class Main {
     public static void main(String[] args){

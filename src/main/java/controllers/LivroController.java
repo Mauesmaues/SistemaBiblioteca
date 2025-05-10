@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class LivroController {
-    private List<Livro> livro;
+    private static List<Livro> livro;
 
     public LivroController() {
         this.livro = new ArrayList<Livro>();
@@ -42,9 +42,9 @@ public class LivroController {
          return this.livro.stream().filter(l -> l.getId() == id).findFirst();
     }
 
-    public Optional<Livro> pesquisarLivroNome(String nome){
-        return this.livro.stream()
-                .filter(l -> l.getTitulo().equals(nome))
+    public static Optional<Livro> pesquisarLivroNome(String titulo){
+        return livro.stream()
+                .filter(l -> l.getTitulo().equalsIgnoreCase(titulo))
                 .findFirst();
     }
 

@@ -2,11 +2,13 @@ package controllers;
 
 import model.Usuario;
 
+import java.nio.file.OpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class UsuarioController {
-    private List<Usuario> usuarios;
+    private static List<Usuario> usuarios;
 
     public UsuarioController() {
         this.usuarios = new ArrayList<>();
@@ -22,5 +24,11 @@ public class UsuarioController {
 
     public void adicionarUsuario(Usuario usuario) {
         this.usuarios.add(usuario);
+    }
+
+    public static Optional<Usuario> buscarUsuario(String nome) {
+        return usuarios.stream()
+                .filter(usuario -> usuario.getNome().equalsIgnoreCase(nome))
+                .findFirst();
     }
 }
