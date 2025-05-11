@@ -59,14 +59,6 @@ public class Livro implements Comparable<Livro> {
         this.exemplaresDisponiveis = exemplaresDisponiveis;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
     @Override
     public int compareTo(Livro o) {
         return this.titulo.compareTo(o.titulo);

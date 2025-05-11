@@ -10,8 +10,13 @@ import java.util.Optional;
 
 public final class LivroFactory {
 
-    public static Livro criarLivro(String titulo, Autor autor, LocalDate anoDePublicacao, int exemplaresDisponiveis, Categoria categoria, int id) {
+    public static Optional<Livro> criarLivro(String titulo, Autor autor, String anoDePublicacao, int exemplaresDisponiveis, Categoria categoria, int id) {
 
-        return new Livro(titulo, autor, anoDePublicacao, exemplaresDisponiveis, id, categoria);
+        if(titulo.isEmpty() || anoDePublicacao.isEmpty() || exemplaresDisponiveis <= 0 || id < 0) {return Optional.empty();}
+
+        LocalDate dataPublicacao = LocalDate.parse(anoDePublicacao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        Livro livro = new Livro(titulo, autor, dataPublicacao, exemplaresDisponiveis, id, categoria);
+
+        return Optional.of(livro);
     }
 }

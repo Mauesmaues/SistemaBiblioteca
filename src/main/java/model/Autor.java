@@ -1,8 +1,8 @@
 package model;
 
-import enums.StatusAutor;
-
 import java.time.LocalDate;
+
+import enums.StatusAutor;
 
 public class Autor implements Comparable<Autor> {
     private String nome;
@@ -59,8 +59,8 @@ public class Autor implements Comparable<Autor> {
         return "Autor[" +
                 "\nNome: " + nome +
                 "\nData de nascimento:'" + dataNascimento +
-                "\nnacionalidade: '" + nacionalidade +
-                "\nstatusAutor: " + statusAutor +
+                "'\nnacionalidade: '" + nacionalidade +
+                "'\nstatusAutor: " + statusAutor +
                 "\n]";
     }
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class UsuarioController {
     private static List<Usuario> usuarios;
@@ -56,10 +55,6 @@ public class UsuarioController {
     }
 
     public void ordenarUsuario(){ Collections.sort(usuarios);}
-
-    public List<String> listarUsuarios(){
-        return usuarios.stream().map(Usuario::getNome).toList();
-    }
 
     public static Optional<Usuario> buscarUsuario(String nome) {
         return usuarios.stream()
