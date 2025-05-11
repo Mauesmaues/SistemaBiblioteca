@@ -1,14 +1,12 @@
 package controllers;
 
-import factory.UsuarioFactory;
-import model.Usuario;
-
-import java.nio.file.OpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
+import factory.UsuarioFactory;
+import model.Usuario;
 
 public class UsuarioController {
     private static List<Usuario> usuarios;
@@ -66,4 +64,5 @@ public class UsuarioController {
                 .filter(usuario -> usuario.getNome().equalsIgnoreCase(nome))
                 .findFirst();
     }
+
 }
