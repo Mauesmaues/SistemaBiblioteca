@@ -1,16 +1,20 @@
 package model;
 
-public class Usuario {
+import java.time.LocalDate;
+
+public class Usuario implements Comparable<Usuario> {
     private String nome;
     private String telefone;
     private String endereco;
     private String email;
+    private LocalDate dataCadastro;
 
     public Usuario(String nome, String telefone, String endereco, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
+        this.dataCadastro = LocalDate.now();
     }
 
     public String getNome() {
@@ -43,5 +47,10 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public int compareTo(Usuario o) {
+        return this.nome.compareTo(o.getNome());
     }
 }

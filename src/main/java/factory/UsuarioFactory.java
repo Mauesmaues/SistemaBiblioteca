@@ -3,17 +3,13 @@ package factory;
 import controllers.UsuarioController;
 import model.Usuario;
 
-public class UsuarioFactory {
-    private UsuarioController usuarioController;
+import java.util.Optional;
 
-    public UsuarioFactory(UsuarioController usuarioController) {
-        this.usuarioController = usuarioController;
+public final class UsuarioFactory {
+
+    public static Usuario criarUsuario(String nome, String telefone, String endereco, String email) {
+
+        return  new Usuario(nome, telefone, endereco, email);
+
     }
-
-    public void cadastrarUsuario(String nome, String telefone, String endereco, String email) {
-        Usuario usuario = new Usuario(nome, telefone, endereco, email);
-        usuarioController.adicionarUsuario(usuario);
-    }
-
-    public void buscarUsuario(int id) {}
 }
