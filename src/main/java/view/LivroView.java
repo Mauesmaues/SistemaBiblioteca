@@ -8,8 +8,8 @@ public final class LivroView {
     private final LivroController livroController;
     private final Scanner scanner;
 
-    public LivroView() {
-        this.livroController = new LivroController();
+    public LivroView(LivroController livroController) {
+        this.livroController = livroController;
         this.scanner = new Scanner(System.in);
     }
 

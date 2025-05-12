@@ -1,9 +1,5 @@
 package controllers;
 
-import model.Emprestimo;
-import model.Livro;
-import model.Usuario;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +7,24 @@ import java.util.Optional;
 
 import enums.StatusEmprestimo;
 import factory.EmprestimoFactory;
+import model.Emprestimo;
+import model.Livro;
+import model.Usuario;
 
 public class EmprestimoController {
+    
 
     private static List<Emprestimo> emprestimos;
 
-    public void ListEmprestimo() {
-        this.emprestimos = new ArrayList<Emprestimo>();
+    public EmprestimoController() {
+    this.emprestimos = new ArrayList<Emprestimo>();
     }
 
-    public String cadastrarEmprestimo(LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao,
+    public String cadastrarEmprestimo(
             String usuario, String livro) {
-        
-        int id = emprestimos.size() + 1;
+    
+        int id = 0;
+        if (!emprestimos.isEmpty()) {id = emprestimos.getLast().getId() + 1;}
 
         if (UsuarioController.buscarUsuario(usuario).isEmpty()) {return "Usuario não encontrado!"; }
 
@@ -36,8 +37,10 @@ public class EmprestimoController {
         Livro livroEmprestimo = LivroController.pesquisarLivroNome(livro).get();
         Usuario usuarioEmprestimo = UsuarioController.buscarUsuario(usuario).get();
         livroEmprestimo.setExemplaresDisponiveis(livroEmprestimo.getExemplaresDisponiveis() - 1);
+        LocalDate dataEmprestimo = LocalDate.now();
+        LocalDate dataPrevistaDevolucao = dataEmprestimo.plusDays(7);
 
-        Emprestimo emprestimo = EmprestimoFactory.criarEmprestimo(id, dataEmprestimo, dataPrevistaDevolucao, usuarioEmprestimo ,livroEmprestimo).get();
+        Emprestimo emprestimo = EmprestimoFactory.criarEmprestimo(id, dataEmprestimo, dataPrevistaDevolucao,usuarioEmprestimo ,livroEmprestimo).get();
         this.emprestimos.add(emprestimo);
         return "Emprestimo criado com sucesso!";
     }
@@ -102,13 +105,13 @@ public class EmprestimoController {
     public static List<String> listarLivrosPopulares() {
     return emprestimos.stream()
             .collect(java.util.stream.Collectors.toMap(
-                    e -> e.getLivro().getTitulo(),      // Chave: título do livro
-                    e -> 1,                             // Valor: conta 1 para cada empréstimo
-                    Integer::sum                        // Se o livro for repetido, soma a quantidade
+                    e -> e.getLivro().getTitulo(),      
+                    e -> 1,                             
+                    Integer::sum                        
             ))
             .entrySet()
             .stream()
-            .sorted((a, b) -> b.getValue().compareTo(a.getValue())) // Ordena em ordem decrescente de empréstimos
+            .sorted((a, b) -> b.getValue().compareTo(a.getValue())) 
             .map(entry -> entry.getKey() + " - " + entry.getValue() + " empréstimos")
             .toList();
     }

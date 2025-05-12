@@ -8,8 +8,8 @@ public final class CategoriaView {
     private final CategoriaController categoriaController;
     private final Scanner scanner;
 
-    public CategoriaView() {
-        this.categoriaController = new CategoriaController();
+    public CategoriaView(CategoriaController categoriaController) {
+        this.categoriaController = categoriaController;
         this.scanner = new Scanner(System.in);
     }
 

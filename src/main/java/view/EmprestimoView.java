@@ -1,7 +1,5 @@
 package view;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import controllers.EmprestimoController;
@@ -10,8 +8,8 @@ public final class EmprestimoView {
     private final EmprestimoController emprestimoController;
     private final Scanner scanner;
 
-    public EmprestimoView() {
-        this.emprestimoController = new EmprestimoController();
+    public EmprestimoView(EmprestimoController emprestimoController) {
+        this.emprestimoController = emprestimoController;
         this.scanner = new Scanner(System.in);
     }
 
@@ -49,11 +47,7 @@ public final class EmprestimoView {
             String usuario = scanner.nextLine();
             System.out.print("Digite o título do livro: ");
             String livro = scanner.nextLine();
-            System.out.print("Digite a data do empréstimo (formato YYYY-MM-DD): ");
-            LocalDate dataEmprestimo = LocalDate.parse(scanner.nextLine());
-            System.out.print("Digite a data prevista de devolução (formato YYYY-MM-DD): ");
-            LocalDate dataPrevistaDevolucao = LocalDate.parse(scanner.nextLine());
-            System.out.println(emprestimoController.cadastrarEmprestimo(dataEmprestimo, dataPrevistaDevolucao, usuario, livro));
+            System.out.println(emprestimoController.cadastrarEmprestimo( usuario, livro));
     }
 
     private void buscarEmprestimoPorUsuario() {

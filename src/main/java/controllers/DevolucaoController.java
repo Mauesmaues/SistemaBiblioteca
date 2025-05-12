@@ -6,6 +6,7 @@ import model.Livro;
 import model.Usuario;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +17,16 @@ import factory.DevolucaoFactory;
 import factory.AtrasosFactory;
 
 public class DevolucaoController {
-    private List<Devolucao> devolucoes;
+    private static List<Devolucao> devolucoes;
 
-    public void ListEmprestimo() {
+    public DevolucaoController() {
         this.devolucoes = new ArrayList<Devolucao>();
     }
 
     public String registrarDevolucao(String usuario, String dataDevolucao) {
-        LocalDate data = LocalDate.parse(dataDevolucao);
-        int id = devolucoes.size() + 1;
+        LocalDate data = LocalDate.parse(dataDevolucao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        int id = 0;
+        if (!devolucoes.isEmpty()) { id = devolucoes.getLast().getId() + 1;}
         if (EmprestimoController.buscarEmprestimoUser(usuario).get().getDataEmprestimo().isBefore(data)) {
             return "Devolucao não pode ser registrada antes da data de Emprestimo!";
         }

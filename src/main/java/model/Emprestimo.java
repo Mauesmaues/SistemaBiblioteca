@@ -1,8 +1,8 @@
 package model;
 
-import enums.StatusEmprestimo;
-
 import java.time.LocalDate;
+
+import enums.StatusEmprestimo;
 
 public class Emprestimo implements Comparable<Emprestimo> {
     private int id;
@@ -15,8 +15,8 @@ public class Emprestimo implements Comparable<Emprestimo> {
     public Emprestimo(int id, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao,
         Usuario usuario, Livro livro) {
         this.id = id;
-        this.dataEmprestimo = LocalDate.now();
-        this.dataPrevistaDevolucao = dataEmprestimo.plusDays(7);
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataPrevistaDevolucao = dataPrevistaDevolucao;
         this.usuario = usuario;
         this.livro = livro;
         this.statusEmprestimo = StatusEmprestimo.EMPRESTADO;

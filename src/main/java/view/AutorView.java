@@ -8,8 +8,8 @@ public final class AutorView {
     private final AutorController autorController;
     private final Scanner scanner;
 
-    public AutorView() {
-        this.autorController = new AutorController();
+    public AutorView(AutorController autorController) {
+        this.autorController = autorController;
         this.scanner = new Scanner(System.in);
     }
 

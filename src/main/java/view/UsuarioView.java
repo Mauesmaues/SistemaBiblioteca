@@ -8,8 +8,8 @@ public final class UsuarioView {
     private final UsuarioController usuarioController;
     private final Scanner scanner;
 
-    public UsuarioView() {
-        this.usuarioController = new UsuarioController();
+    public UsuarioView(UsuarioController usuarioController) {
+        this.usuarioController = usuarioController;
         this.scanner = new Scanner(System.in);
     }
 

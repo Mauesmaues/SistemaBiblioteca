@@ -8,8 +8,8 @@ public final class DevolucaoView {
     private final DevolucaoController devolucaoController;
     private final Scanner scanner;
 
-    public DevolucaoView() {
-        this.devolucaoController = new DevolucaoController();
+    public DevolucaoView(DevolucaoController devolucaoController) {
+        this.devolucaoController = devolucaoController;
         this.scanner = new Scanner(System.in);
     }
 
