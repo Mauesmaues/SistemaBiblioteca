@@ -21,7 +21,8 @@ public final class UsuarioView {
             System.out.println("2. Excluir Usuário");
             System.out.println("3. Alterar Usuário");
             System.out.println("4. Buscar Usuário por Nome");
-            System.out.println("5. Ordenar Usuários");
+            System.out.println("5. Ordenar Usuários em ordem alfabética");
+            System.out.println("6. Listar Usuários");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -33,6 +34,7 @@ public final class UsuarioView {
                 case 3 -> alterarUsuario();
                 case 4 -> buscarUsuario();
                 case 5 -> ordenarUsuarios();
+                case 6 -> listarUsuarios();
                 case 0 -> System.out.println("Saindo do menu de usuários...");
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
@@ -85,5 +87,9 @@ public final class UsuarioView {
     private void ordenarUsuarios() {
         usuarioController.ordenarUsuario();
         System.out.println("Usuários ordenados com sucesso!");
+    }
+
+    private void listarUsuarios() {
+        usuarioController.listarUsuarios().forEach(System.out::println);
     }
 }

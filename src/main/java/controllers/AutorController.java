@@ -54,13 +54,16 @@ public class AutorController {
         return autors.stream().map(autor -> autor.getNome()).toList();
     }
 
-    public String alterarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(buscarAutor(nome).isEmpty()) {
-            return "Autor não encontrado!";
-        }
+    public String alterarAutor(String nome, String novoNome, String dataNasc, String nacionalidade, String status) {
+        if(buscarAutor(nome).isEmpty()) {return "Autor não encontrado!";}
+        if(novoNome.isEmpty()){return "Campo novo nome em branco!";}
+        if(dataNasc.isEmpty()){return "Data de nascimento em branco!";}
+        if(status.isEmpty()){return "Status em branco!";}
+
         Optional<Autor> autor = buscarAutor(nome);
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         if (autor.isPresent()) {
+            autor.get().setNome(novoNome);
             autor.get().setNacionalidade(nacionalidade);
             autor.get().setDataNascimento(data);
             autor.get().setStatusAutor(StatusAutor.valueOf(status));

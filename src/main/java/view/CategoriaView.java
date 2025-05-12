@@ -22,6 +22,7 @@ public final class CategoriaView {
             System.out.println("3. Buscar Categoria por Nome");
             System.out.println("4. Excluir Categoria");
             System.out.println("5. Ordenar Categorias");
+            System.out.println("6. Alterar Categoria");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -67,5 +68,17 @@ public final class CategoriaView {
     private void ordenarCategorias() {
         categoriaController.ordenarCategoria();
         System.out.println("Categorias ordenadas com sucesso!");
+    }
+
+    private void alterarCategoria() {
+        System.out.print("Digite o nome da categoria alterada: ");
+        String categoria = scanner.nextLine();
+        System.out.print("Digite o novo nome da categoria: ");
+        String novoNome = scanner.nextLine();
+        System.out.print("Digite a nova descrição da categoria: ");
+        String descricao = scanner.nextLine();
+
+        String resultado = categoriaController.alterarCategoria(categoria, novoNome, descricao);
+        System.out.println(resultado);
     }
 }

@@ -78,13 +78,15 @@ public final class AutorView {
     private void alterarAutor() {
         System.out.print("Digite o nome do autor a ser alterado: ");
         String nome = scanner.nextLine();
+        System.out.print("Digite o  novo nome do autor a ser alterado: ");
+        String novoNome = scanner.nextLine();
         System.out.print("Digite a nova data de nascimento do autor (formato dd/MM/yyyy): ");
         String dataNasc = scanner.nextLine();
         System.out.print("Digite a nova nacionalidade do autor: ");
         String nacionalidade = scanner.nextLine();
         System.out.print("Digite o novo status do autor (ATIVO/INATIVO): ");
         String status = scanner.nextLine().toUpperCase();
-        System.out.println(autorController.alterarAutor(nome, dataNasc, nacionalidade, status));
+        System.out.println(autorController.alterarAutor(nome, novoNome, dataNasc, nacionalidade, status));
     }
 
     private void ordenarAutores() {
