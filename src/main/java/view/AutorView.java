@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.AutorController;
 
-public class AutorView {
+public final class AutorView {
     private final AutorController autorController;
     private final Scanner scanner;
 
@@ -26,7 +26,7 @@ public class AutorView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> cadastrarAutor();
@@ -83,7 +83,7 @@ public class AutorView {
         System.out.print("Digite a nova nacionalidade do autor: ");
         String nacionalidade = scanner.nextLine();
         System.out.print("Digite o novo status do autor (ATIVO/INATIVO): ");
-        String status = scanner.nextLine().toUpperCase(); // Converter para maiúsculas
+        String status = scanner.nextLine().toUpperCase();
         System.out.println(autorController.alterarAutor(nome, dataNasc, nacionalidade, status));
     }
 

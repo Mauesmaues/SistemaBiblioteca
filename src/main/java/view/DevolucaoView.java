@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.DevolucaoController;
 
-public class DevolucaoView {
+public final class DevolucaoView {
     private final DevolucaoController devolucaoController;
     private final Scanner scanner;
 
@@ -21,7 +21,7 @@ public class DevolucaoView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.LivroController;
 
-public class LivroView {
+public final class LivroView {
     private final LivroController livroController;
     private final Scanner scanner;
 

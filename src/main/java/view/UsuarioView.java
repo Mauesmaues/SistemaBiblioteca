@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.UsuarioController;
 
-public class UsuarioView {
+public final class UsuarioView {
     private final UsuarioController usuarioController;
     private final Scanner scanner;
 

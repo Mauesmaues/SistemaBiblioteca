@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import controllers.EmprestimoController;
 
-public class EmprestimoView {
+public final class EmprestimoView {
     private final EmprestimoController emprestimoController;
     private final Scanner scanner;
 
@@ -44,7 +44,7 @@ public class EmprestimoView {
     }
 
     private void registrarEmprestimo() {
-        try {
+
             System.out.print("Digite o nome do usuário: ");
             String usuario = scanner.nextLine();
             System.out.print("Digite o título do livro: ");
@@ -54,11 +54,6 @@ public class EmprestimoView {
             System.out.print("Digite a data prevista de devolução (formato YYYY-MM-DD): ");
             LocalDate dataPrevistaDevolucao = LocalDate.parse(scanner.nextLine());
             System.out.println(emprestimoController.cadastrarEmprestimo(dataEmprestimo, dataPrevistaDevolucao, usuario, livro));
-        } catch (DateTimeParseException e) {
-            System.out.println("Erro: Data inválida. Use o formato YYYY-MM-DD.");
-        } catch (Exception e) {
-            System.out.println("Erro ao registrar empréstimo: " + e.getMessage());
-        }
     }
 
     private void buscarEmprestimoPorUsuario() {
