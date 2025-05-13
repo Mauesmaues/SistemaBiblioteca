@@ -5,6 +5,7 @@ import java.util.Scanner;
 import controllers.CategoriaController;
 
 public final class CategoriaView {
+
     private final CategoriaController categoriaController;
     private final Scanner scanner;
 
@@ -26,16 +27,25 @@ public final class CategoriaView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
-                case 1 -> cadastrarCategoria();
-                case 2 -> listarCategorias();
-                case 3 -> buscarCategoria();
-                case 4 -> excluirCategoria();
-                case 5 -> ordenarCategorias();
-                case 0 -> System.out.println("Saindo do menu de categorias...");
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                case 1 ->
+                    cadastrarCategoria();
+                case 2 ->
+                    listarCategorias();
+                case 3 ->
+                    buscarCategoria();
+                case 4 ->
+                    excluirCategoria();
+                case 5 ->
+                    ordenarCategorias();
+                case 6 ->
+                    alterarCategoria();
+                case 0 ->
+                    System.out.println("Saindo do menu de categorias...");
+                default ->
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
     }

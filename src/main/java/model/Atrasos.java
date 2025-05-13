@@ -5,10 +5,11 @@ import java.time.Period;
 import java.util.Comparator;
 
 public class Atrasos extends Devolucao {
+
     private int diasAtrasados;
 
     public Atrasos(int id, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao, Usuario usuario, Livro livro,
-                   LocalDate dataDevolucao) {
+            LocalDate dataDevolucao) {
         super(id, dataEmprestimo, dataPrevistaDevolucao, usuario, livro, dataDevolucao);
 
         if (dataDevolucao.isAfter(dataPrevistaDevolucao)) {
@@ -24,22 +25,22 @@ public class Atrasos extends Devolucao {
     }
 
     public class AtrasosComparator implements Comparator<Atrasos> {
-    @Override
-    public int compare(Atrasos a1, Atrasos a2) {
-        return Integer.compare(a1.getDiasAtrasados(), a2.getDiasAtrasados());
-    }
 
+        @Override
+        public int compare(Atrasos a1, Atrasos a2) {
+            return Integer.compare(a1.getDiasAtrasados(), a2.getDiasAtrasados());
+        }
 
-    @Override
-    public String toString() {
-        return "Atrasos [diasAtrasados=" + diasAtrasados
-                + ", dataEmprestimo=" + getDataEmprestimo()
-                + ", dataPrevistaDevolucao=" + getDataPrevistaDevolucao()
-                + ", dataDevolucao=" + getDataDevolucao()
-                + ", usuario=" + getUsuario()
-                + ", livro=" + getLivro()
-                + ", statusEmprestimo=" + getStatusEmprestimo()
-                + "]";
+        @Override
+        public String toString() {
+            return "\nAtrasos [diasAtrasados=" + diasAtrasados
+                    + "\n dataEmprestimo=" + getDataEmprestimo()
+                    + "\n dataPrevistaDevolucao=" + getDataPrevistaDevolucao()
+                    + "\n dataDevolucao=" + getDataDevolucao()
+                    + "\n usuario=" + getUsuario()
+                    + "\n livro=" + getLivro()
+                    + "\n statusEmprestimo=" + getStatusEmprestimo()
+                    + "]";
+        }
     }
-  }
 }

@@ -2,9 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
-import javax.xml.crypto.Data;
+public class Devolucao extends Emprestimo {
 
-public class Devolucao extends Emprestimo{
     private LocalDate dataDevolucao;
     private int diasEmprestados;
     private int id;
@@ -26,6 +25,6 @@ public class Devolucao extends Emprestimo{
 
     @Override
     public String toString() {
-        return "Devolucao [dataDevolucao=" + dataDevolucao + ", diasEmprestados=" + diasEmprestados + "]";
-    }    
+        return "Devolucao [\ndataDevolucao=" + dataDevolucao + "\ndiasEmprestados=" + diasEmprestados + "]";
+    }
 }

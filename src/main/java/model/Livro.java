@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class Livro implements Comparable<Livro> {
+
     private String titulo;
     private Autor autor;
     private LocalDate anoDePublicacao;
@@ -70,5 +71,11 @@ public class Livro implements Comparable<Livro> {
     @Override
     public int compareTo(Livro o) {
         return this.titulo.compareTo(o.titulo);
+    }
+
+    @Override
+    public String toString() {
+        return "Livro [titulo=" + titulo + "\nautor=" + autor + "\nanoDePublicacao=" + anoDePublicacao
+                + "\nexemplaresDisponiveis=" + exemplaresDisponiveis + "\ncategoria=" + categoria + "\nid=" + id + "]";
     }
 }

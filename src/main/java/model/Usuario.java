@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class Usuario implements Comparable<Usuario> {
+
     private String nome;
     private String telefone;
     private String endereco;
@@ -52,5 +53,11 @@ public class Usuario implements Comparable<Usuario> {
     @Override
     public int compareTo(Usuario o) {
         return this.nome.compareTo(o.getNome());
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [nome=" + nome + "\ntelefone=" + telefone + "\nendereco=" + endereco + "\nemail=" + email
+                + "\ndataCadastro=" + dataCadastro + "]";
     }
 }

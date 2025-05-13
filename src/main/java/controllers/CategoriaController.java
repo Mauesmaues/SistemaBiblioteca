@@ -1,15 +1,15 @@
 package controllers;
 
-import model.Categoria;
-import factory.CategoriaFactory;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
+import factory.CategoriaFactory;
+import model.Categoria;
 
 public class CategoriaController {
+
     private static List<Categoria> listaCategoria;
 
     public CategoriaController() {
@@ -17,9 +17,15 @@ public class CategoriaController {
     }
 
     public String cadastrarCategoria(String nomeCategoria, String descricao) {
-        if(buscarCategoria(nomeCategoria).isPresent()) { return "Categoria ja existente!";}
-        if(nomeCategoria.isEmpty()) { return "Campo nome em branco!";}
-        if(descricao.isEmpty()) { return "Campo descricao em branco!";}
+        if (buscarCategoria(nomeCategoria).isPresent()) {
+            return "Categoria ja existente!";
+        }
+        if (nomeCategoria.isEmpty()) {
+            return "Campo nome em branco!";
+        }
+        if (descricao.isEmpty()) {
+            return "Campo descricao em branco!";
+        }
 
         Categoria categoria = CategoriaFactory.criarCategoria(nomeCategoria, descricao);
         listaCategoria.add(categoria);
@@ -27,7 +33,7 @@ public class CategoriaController {
     }
 
     public String excluirCategoria(String nomeCategoria) {
-        if(buscarCategoria(nomeCategoria).isEmpty()){
+        if (buscarCategoria(nomeCategoria).isEmpty()) {
             return "categoria nao encontrada!";
         }
         listaCategoria.remove(buscarCategoria(nomeCategoria).get());
@@ -36,7 +42,7 @@ public class CategoriaController {
 
     public static Optional<Categoria> buscarCategoria(String nome) {
         for (Categoria categoria : listaCategoria) {
-            if(categoria.getNomeCategoria().equals(nome)) {
+            if (categoria.getNomeCategoria().equalsIgnoreCase(nome)) {
                 return Optional.of(categoria);
             }
         }
@@ -44,9 +50,15 @@ public class CategoriaController {
     }
 
     public String alterarCategoria(String nomeCategoria, String novoNome, String descricao) {
-        if(buscarCategoria(nomeCategoria).isEmpty()) {return "Categoria nao encontrada!";}
-        if(novoNome.isEmpty()) { return "Campo nome novo em branco!";}
-        if(descricao.isEmpty()) { return "Campo descricao em branco!";}
+        if (buscarCategoria(nomeCategoria).isEmpty()) {
+            return "Categoria nao encontrada!";
+        }
+        if (novoNome.isEmpty()) {
+            return "Campo nome novo em branco!";
+        }
+        if (descricao.isEmpty()) {
+            return "Campo descricao em branco!";
+        }
 
         buscarCategoria(nomeCategoria).ifPresent(categoria -> {
             categoria.setNomeCategoria(novoNome);

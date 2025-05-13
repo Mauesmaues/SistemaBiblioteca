@@ -1,6 +1,7 @@
 package model;
 
-public class Categoria implements Comparable<Categoria>{
+public class Categoria implements Comparable<Categoria> {
+
     private String nomeCategoria;
     private String descricaoCategoria;
 
@@ -8,7 +9,6 @@ public class Categoria implements Comparable<Categoria>{
         this.nomeCategoria = nomeCategoria;
         this.descricaoCategoria = descricaoCategoria;
     }
-
 
     public String getNomeCategoria() {
         return nomeCategoria;
@@ -30,4 +30,10 @@ public class Categoria implements Comparable<Categoria>{
     public int compareTo(Categoria o) {
         return this.nomeCategoria.compareTo(o.getNomeCategoria());
     }
+
+    @Override
+    public String toString() {
+        return "\nCategoria [nomeCategoria=" + nomeCategoria + "\ndescricaoCategoria=" + descricaoCategoria + "]";
+    }
+
 }
