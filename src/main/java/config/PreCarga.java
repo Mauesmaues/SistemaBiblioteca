@@ -7,10 +7,6 @@ import controllers.EmprestimoController;
 import controllers.LivroController;
 import controllers.UsuarioController;
 
-/**
- * Classe responsável por realizar a pré-carga de dados para teste do sistema.
- * Adiciona autores, categorias, livros, usuários, empréstimos e devoluções.
- */
 public class PreCarga {
 
     private final AutorController autorController;
@@ -20,17 +16,6 @@ public class PreCarga {
     private final EmprestimoController emprestimoController;
     private final DevolucaoController devolucaoController;
 
-    /**
-     * Construtor que inicializa a pré-carga com os controllers fornecidos e
-     * executa automaticamente o carregamento dos dados de teste.
-     *
-     * @param autorController Controller de autores
-     * @param categoriaController Controller de categorias
-     * @param livroController Controller de livros
-     * @param usuarioController Controller de usuários
-     * @param emprestimoController Controller de empréstimos
-     * @param devolucaoController Controller de devoluções
-     */
     public PreCarga(AutorController autorController, CategoriaController categoriaController, LivroController livroController,
             UsuarioController usuarioController, EmprestimoController emprestimoController, DevolucaoController devolucaoController) {
 
@@ -41,115 +26,73 @@ public class PreCarga {
         this.emprestimoController = emprestimoController;
         this.devolucaoController = devolucaoController;
 
-        System.out.println("\n========= INICIANDO PRÉ-CARGA DE DADOS =========\n");
         carregarAutores();
         carregarCategorias();
         carregarLivros();
         carregarUsuarios();
         carregarEmprestimos();
         carregarDevolucoes();
-        System.out.println("\n========= PRÉ-CARGA CONCLUÍDA COM SUCESSO =========\n");
+
     }
 
-    /**
-     * Carrega dados iniciais de autores no sistema
-     */
     private void carregarAutores() {
-        System.out.println("-> Carregando autores...");
-        String resultado;
 
-        resultado = autorController.cadastrarAutor("J.K. Rowling", "31/07/1965", "Britânica", "ATIVO");
-        System.out.println("   - J.K. Rowling: " + resultado);
+         autorController.cadastrarAutor("J.K. Rowling", "31/07/1965", "Britânica", "ATIVO");
 
-        resultado = autorController.cadastrarAutor("George Orwell", "25/06/1903", "Britânico", "ATIVO");
-        System.out.println("   - George Orwell: " + resultado);
+         autorController.cadastrarAutor("George Orwell", "25/06/1903", "Britânico", "ATIVO");
 
-        resultado = autorController.cadastrarAutor("Machado de Assis", "21/06/1839", "Brasileiro", "ATIVO");
-        System.out.println("   - Machado de Assis: " + resultado);
+         autorController.cadastrarAutor("Machado de Assis", "21/06/1839", "Brasileiro", "ATIVO");
 
-        resultado = autorController.cadastrarAutor("Clarice Lispector", "10/12/1920", "Brasileira", "ATIVO");
-        System.out.println("   - Clarice Lispector: " + resultado);
+         autorController.cadastrarAutor("Clarice Lispector", "10/12/1920", "Brasileira", "ATIVO");
 
-        resultado = autorController.cadastrarAutor("Gabriel García Márquez", "06/03/1927", "Colombiano", "ATIVO");
-        System.out.println("   - Gabriel García Márquez: " + resultado);
+         autorController.cadastrarAutor("Gabriel García Márquez", "06/03/1927", "Colombiano", "ATIVO");
 
-        resultado = autorController.cadastrarAutor("Jane Austen", "16/12/1775", "Britânica", "ATIVO");
-        System.out.println("   - Jane Austen: " + resultado);
+         autorController.cadastrarAutor("Jane Austen", "16/12/1775", "Britânica", "ATIVO");
     }
 
-    /**
-     * Carrega dados iniciais de categorias no sistema
-     */
     private void carregarCategorias() {
-        System.out.println("-> Carregando categorias...");
-        String resultado;
 
-        resultado = categoriaController.cadastrarCategoria("Fantasia", "Livros de fantasia e mundos imaginários");
-        System.out.println("   - Fantasia: " + resultado);
+         categoriaController.cadastrarCategoria("Fantasia", "Livros de fantasia e mundos imaginários");
 
-        resultado = categoriaController.cadastrarCategoria("Ficção Científica", "Livros de ficção científica e futurismo");
-        System.out.println("   - Ficção Científica: " + resultado);
+         categoriaController.cadastrarCategoria("Ficção Científica", "Livros de ficção científica e futurismo");
 
-        resultado = categoriaController.cadastrarCategoria("Romance", "Livros de histórias românticas");
-        System.out.println("   - Romance: " + resultado);
+         categoriaController.cadastrarCategoria("Romance", "Livros de histórias românticas");
 
-        resultado = categoriaController.cadastrarCategoria("Literatura Brasileira", "Livros de autores brasileiros");
-        System.out.println("   - Literatura Brasileira: " + resultado);
+         categoriaController.cadastrarCategoria("Literatura Brasileira", "Livros de autores brasileiros");
 
-        resultado = categoriaController.cadastrarCategoria("Drama", "Livros com histórias dramáticas");
-        System.out.println("   - Drama: " + resultado);
+         categoriaController.cadastrarCategoria("Drama", "Livros com histórias dramáticas");
 
-        resultado = categoriaController.cadastrarCategoria("Clássicos", "Livros considerados clássicos da literatura mundial");
-        System.out.println("   - Clássicos: " + resultado);
+         categoriaController.cadastrarCategoria("Clássicos", "Livros considerados clássicos da literatura mundial");
+
     }
 
-    /**
-     * Carrega dados iniciais de livros no sistema
-     */
     private void carregarLivros() {
-        System.out.println("-> Carregando livros...");
-        String resultado;
 
-        resultado = livroController.cadastrarLivro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "26/06/1997", 5, "Fantasia");
-        System.out.println("   - Harry Potter e a Pedra Filosofal: " + resultado);
+         livroController.cadastrarLivro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "26/06/1997", 5, "Fantasia");
 
-        resultado = livroController.cadastrarLivro("1984", "George Orwell", "08/06/1949", 3, "Ficção Científica");
-        System.out.println("   - 1984: " + resultado);
+         livroController.cadastrarLivro("1984", "George Orwell", "08/06/1949", 3, "Ficção Científica");
 
-        resultado = livroController.cadastrarLivro("Dom Casmurro", "Machado de Assis", "01/01/1899", 4, "Literatura Brasileira");
-        System.out.println("   - Dom Casmurro: " + resultado);
+         livroController.cadastrarLivro("Dom Casmurro", "Machado de Assis", "01/01/1899", 4, "Literatura Brasileira");
 
-        resultado = livroController.cadastrarLivro("A Hora da Estrela", "Clarice Lispector", "01/01/1977", 2, "Literatura Brasileira");
-        System.out.println("   - A Hora da Estrela: " + resultado);
+         livroController.cadastrarLivro("A Hora da Estrela", "Clarice Lispector", "01/01/1977", 2, "Literatura Brasileira");
 
-        resultado = livroController.cadastrarLivro("Cem Anos de Solidão", "Gabriel García Márquez", "01/01/1967", 3, "Drama");
-        System.out.println("   - Cem Anos de Solidão: " + resultado);
+         livroController.cadastrarLivro("Cem Anos de Solidão", "Gabriel García Márquez", "01/01/1967", 3, "Drama");
 
-        resultado = livroController.cadastrarLivro("Orgulho e Preconceito", "Jane Austen", "28/01/1813", 2, "Clássicos");
-        System.out.println("   - Orgulho e Preconceito: " + resultado);
+         livroController.cadastrarLivro("Orgulho e Preconceito", "Jane Austen", "28/01/1813", 2, "Clássicos");
+
     }
 
-    /**
-     * Carrega dados iniciais de usuários no sistema
-     */
     private void carregarUsuarios() {
-        System.out.println("-> Carregando usuários...");
-        String resultado;
 
-        resultado = usuarioController.cadastrarUsuario("Carlos Silva", "(11) 98765-4321", "Rua das Flores, 123", "carlos.silva@email.com");
-        System.out.println("   - Carlos Silva: " + resultado);
+         usuarioController.cadastrarUsuario("Carlos Silva", "(11) 98765-4321", "Rua das Flores, 123", "carlos.silva@email.com");
 
-        resultado = usuarioController.cadastrarUsuario("Maria Oliveira", "(21) 97654-3210", "Av. Principal, 456", "maria.oliveira@email.com");
-        System.out.println("   - Maria Oliveira: " + resultado);
+         usuarioController.cadastrarUsuario("Maria Oliveira", "(21) 97654-3210", "Av. Principal, 456", "maria.oliveira@email.com");
 
-        resultado = usuarioController.cadastrarUsuario("João Santos", "(31) 96543-2109", "Praça Central, 789", "joao.santos@email.com");
-        System.out.println("   - João Santos: " + resultado);
+         usuarioController.cadastrarUsuario("João Santos", "(31) 96543-2109", "Praça Central, 789", "joao.santos@email.com");
 
-        resultado = usuarioController.cadastrarUsuario("Ana Lima", "(41) 95432-1098", "Rua das Árvores, 321", "ana.lima@email.com");
-        System.out.println("   - Ana Lima: " + resultado);
+         usuarioController.cadastrarUsuario("Ana Lima", "(41) 95432-1098", "Rua das Árvores, 321", "ana.lima@email.com");
 
-        resultado = usuarioController.cadastrarUsuario("Pedro Almeida", "(51) 94321-0987", "Av. Secundária, 654", "pedro.almeida@email.com");
-        System.out.println("   - Pedro Almeida: " + resultado);
+         usuarioController.cadastrarUsuario("Pedro Almeida", "(51) 94321-0987", "Av. Secundária, 654", "pedro.almeida@email.com");
     }
 
     private void carregarEmprestimos() {

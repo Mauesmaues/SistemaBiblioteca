@@ -13,14 +13,13 @@ public class App {
         UsuarioController usuarioController = new UsuarioController();
         EmprestimoController emprestimoController = new EmprestimoController();
         DevolucaoController devolucaoController = new DevolucaoController();
-        AtrasosController atrasosController = new AtrasosController();
 
         System.out.println("Iniciando pré-carga de dados para teste do sistema...");
         PreCarga preCarga = new PreCarga(autorController, categoriaController, livroController,
                 usuarioController, emprestimoController, devolucaoController);
 
         ViewGeral viewGeral = new ViewGeral(autorController, categoriaController, livroController,
-                usuarioController, emprestimoController, devolucaoController, atrasosController);
+                usuarioController, emprestimoController, devolucaoController);
 
         viewGeral.exibirMenuPrincipal();
     }

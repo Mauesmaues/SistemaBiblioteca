@@ -12,10 +12,7 @@ import model.Usuario;
 
 public class AtrasosView {
     private final Scanner scanner;
-    private final AtrasosController atrasosController;
-
-    public AtrasosView(AtrasosController controller) {
-        this.atrasosController = controller;
+    public AtrasosView() {
         this.scanner = new Scanner(System.in);
     }
 

@@ -15,14 +15,14 @@ public class ViewGeral {
     private final RelatorioView relatorioView;
     private final Scanner scanner;    
 
-    public ViewGeral(AutorController autorController,CategoriaController categoriaController,LivroController livroController,UsuarioController usuarioController,EmprestimoController emprestimoController,DevolucaoController devolucaoController, AtrasosController atrasosController) {
+    public ViewGeral(AutorController autorController,CategoriaController categoriaController,LivroController livroController,UsuarioController usuarioController,EmprestimoController emprestimoController,DevolucaoController devolucaoController) {
         this.categoriaView = new CategoriaView(categoriaController);
         this.autorView = new AutorView(autorController);
         this.usuarioView = new UsuarioView(usuarioController);
         this.livroView = new LivroView(livroController);
         this.emprestimoView = new EmprestimoView(emprestimoController);
         this.devolucaoView = new DevolucaoView(devolucaoController);
-        this.atrasosView = new AtrasosView(atrasosController);
+        this.atrasosView = new AtrasosView();
         this.relatorioView = new RelatorioView();
         this.scanner = new Scanner(System.in);
     }
