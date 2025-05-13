@@ -1,11 +1,13 @@
 package controllers;
 
 import model.Atraso;
+import model.Devolucao;
 import model.Livro;
 import model.Usuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import factory.AtrasosFactory;
@@ -21,11 +23,15 @@ public class AtrasosController {
             atrasos.add(atraso);
     }
 
-    public static List<String> listarLivrosEntreguesEmAtraso() {
-        return atrasos.stream().map(atrasos -> atrasos.getLivro().getTitulo()).toList();
+    public static List<Livro> listarLivrosEntreguesEmAtraso() {
+        return atrasos.stream().map(Devolucao::getLivro).toList();
     }
 
-    public static List<String> listarUsuariosComDevolucoesComAtraso() {
-        return  atrasos.stream().map(atrasos -> atrasos.getUsuario().getNome()).toList();
+    public static List<Usuario> listarUsuariosComDevolucoesComAtraso() {
+        return  atrasos.stream().map(Devolucao::getUsuario).toList();
+    }
+
+    public static void ordenarAtrasosEmOrdemDecrescente() {
+        Collections.sort(atrasos, Collections.reverseOrder());
     }
 }

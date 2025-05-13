@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import service.RelatorioController;
+import service.Relatorio;
 
 public class RelatorioView {
     private final Scanner scanner;
@@ -16,7 +16,7 @@ public class RelatorioView {
         do {
             System.out.println("\n=== Menu de Relatórios ===");
             System.out.println("1. Listar Empréstimos Ativos");
-            System.out.println("2. Listar Usuários com Devoluções Atrasadas");
+            System.out.println("2. Listar Usuários com Devoluções em  Atraso");
             System.out.println("3. Listar Livros Populares");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
@@ -35,16 +35,16 @@ public class RelatorioView {
 
     private void listarEmprestimosAtivos() {
         System.out.println("\n=== Empréstimos Ativos ===");
-        RelatorioController.listarEmprestimosAtivos().forEach(System.out::println);
+        Relatorio.listarEmprestimosAtivos().forEach(System.out::println);
     }
 
     private void listarUsuariosComDevolucoesAtrasadas() {
-        System.out.println("\n=== Usuários com Devoluções Atrasadas ===");
-        RelatorioController.usuariosComDevolucoesAtrasadas().forEach(System.out::println);
+        System.out.println("\n=== Usuários com Devoluções em Atraso ===");
+        Relatorio.usuariosComDevolucoesAtrasadas().forEach(System.out::println);
     }
 
     private void listarLivrosPopulares() {
         System.out.println("\n=== Livros Populares ===");
-        RelatorioController.listarLivrosPopulares().forEach(System.out::println);
+        Relatorio.listarLivrosPopulares().forEach(System.out::println);
     }
 }

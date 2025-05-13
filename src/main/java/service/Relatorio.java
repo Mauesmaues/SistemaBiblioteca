@@ -6,7 +6,7 @@ import controllers.EmprestimoController;
 import enums.StatusEmprestimo;
 import model.Emprestimo;
 
-public class RelatorioController {
+public class Relatorio {
 
     public static List<Emprestimo> listarEmprestimosAtivos() {
         return EmprestimoController.listarEmprestimos().stream()

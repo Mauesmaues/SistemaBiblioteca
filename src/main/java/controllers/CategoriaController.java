@@ -61,7 +61,7 @@ public class CategoriaController {
         Collections.sort(listaCategoria);
     }
 
-    public List<String> listarCategorias() {
-        return this.listaCategoria.stream().map(Categoria::getNomeCategoria).toList();
+    public List<Categoria> listarCategorias() {
+        return listaCategoria;
     }
 }
