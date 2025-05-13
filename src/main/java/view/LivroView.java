@@ -28,7 +28,7 @@ public  class LivroView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> cadastrarLivro();
@@ -54,7 +54,7 @@ public  class LivroView {
         String dataPublicacao = scanner.nextLine();
         System.out.print("Digite o número de exemplares disponíveis: ");
         int exemplaresDisponiveis = scanner.nextInt();
-        scanner.nextLine(); // Consumir a quebra de linha
+        scanner.nextLine();
         System.out.print("Digite o nome da categoria: ");
         String categoria = scanner.nextLine();
 
@@ -73,7 +73,7 @@ public  class LivroView {
         String dataPublicacao = scanner.nextLine();
         System.out.print("Digite o número de exemplares disponíveis: ");
         int exemplaresDisponiveis = scanner.nextInt();
-        scanner.nextLine(); // Consumir a quebra de linha
+        scanner.nextLine();
         System.out.print("Digite o nome da categoria: ");
         String categoria = scanner.nextLine();
 

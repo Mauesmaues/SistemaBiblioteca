@@ -70,7 +70,7 @@ public class EmprestimoView {
     private void buscarEmprestimoPorId() {
         System.out.print("Digite o ID do empréstimo: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consumir a quebra de linha
+        scanner.nextLine();
         var emprestimo = EmprestimoController.buscarEmprestimoId(id);
         if (emprestimo.isPresent()) {
             System.out.println("Empréstimo encontrado: " + emprestimo.get());
