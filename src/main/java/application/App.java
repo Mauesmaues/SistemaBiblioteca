@@ -1,7 +1,15 @@
+//Gabriel Laureano Soares da Silva 38525071
+//Marcos Vinicius Maues das Neves 37399144
+//João Pedro 
 package application;
 
 import config.PreCarga;
-import controllers.*;
+import controllers.AutorController;
+import controllers.CategoriaController;
+import controllers.DevolucaoController;
+import controllers.EmprestimoController;
+import controllers.LivroController;
+import controllers.UsuarioController;
 import view.ViewGeral;
 
 public class App {
