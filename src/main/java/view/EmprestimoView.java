@@ -5,6 +5,7 @@ import java.util.Scanner;
 import controllers.EmprestimoController;
 
 public final class EmprestimoView {
+
     private final EmprestimoController emprestimoController;
     private final Scanner scanner;
 
@@ -20,34 +21,39 @@ public final class EmprestimoView {
             System.out.println("1. Registrar Empréstimo");
             System.out.println("2. Buscar Empréstimo por Usuário");
             System.out.println("3. Buscar Empréstimo por ID");
-            System.out.println("4. Excluir Empréstimo");
-            System.out.println("5. Listar Todos os Empréstimos");
-            System.out.println("6. Atualizar Atrasos");
+            System.out.println("4. Listar Todos os Empréstimos");
+            System.out.println("5. Atualizar Atrasos");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha
 
             switch (opcao) {
-                case 1 -> registrarEmprestimo();
-                case 2 -> buscarEmprestimoPorUsuario();
-                case 3 -> buscarEmprestimoPorId();
-                case 4 -> excluirEmprestimo();
-                case 5 -> listarTodosEmprestimos();
-                case 6 -> atualizarAtrasos();
-                case 0 -> System.out.println("Saindo do menu de empréstimos...");
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                case 1 ->
+                    registrarEmprestimo();
+                case 2 ->
+                    buscarEmprestimoPorUsuario();
+                case 3 ->
+                    buscarEmprestimoPorId();
+                case 4 ->
+                    listarTodosEmprestimos();
+                case 5 ->
+                    atualizarAtrasos();
+                case 0 ->
+                    System.out.println("Saindo do menu de empréstimos...");
+                default ->
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
     }
 
     private void registrarEmprestimo() {
 
-            System.out.print("Digite o nome do usuário: ");
-            String usuario = scanner.nextLine();
-            System.out.print("Digite o título do livro: ");
-            String livro = scanner.nextLine();
-            System.out.println(emprestimoController.cadastrarEmprestimo( usuario, livro));
+        System.out.print("Digite o nome do usuário: ");
+        String usuario = scanner.nextLine();
+        System.out.print("Digite o título do livro: ");
+        String livro = scanner.nextLine();
+        System.out.println(emprestimoController.cadastrarEmprestimo(usuario, livro));
     }
 
     private void buscarEmprestimoPorUsuario() {
@@ -70,15 +76,6 @@ public final class EmprestimoView {
             System.out.println("Empréstimo encontrado: " + emprestimo.get());
         } else {
             System.out.println("Nenhum empréstimo encontrado para o ID informado.");
-        }
-    }
-
-    private void excluirEmprestimo() {
-        var emprestimo = emprestimoController.excluirEmprestimo();
-        if (emprestimo.isPresent()) {
-            System.out.println("Empréstimo excluído: " + emprestimo.get());
-        } else {
-            System.out.println("Nenhum empréstimo foi excluído.");
         }
     }
 

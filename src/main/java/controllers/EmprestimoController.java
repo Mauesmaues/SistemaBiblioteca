@@ -63,16 +63,6 @@ public class EmprestimoController {
         return Optional.empty();
     }
 
-    public Optional<Emprestimo> excluirEmprestimo() {
-        for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getDataPrevistaDevolucao().isBefore(LocalDate.now())) {
-                emprestimos.remove(emprestimo);
-                return Optional.of(emprestimo);
-            }
-        }
-        return Optional.empty();
-    }
-
     public static Optional<Emprestimo> buscarEmprestimoId(int id) {
         for (Emprestimo emprestimo : emprestimos) {
             if (emprestimo.getId() == id) {
