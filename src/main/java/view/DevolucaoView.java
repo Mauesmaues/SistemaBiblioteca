@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.DevolucaoController;
 
-public final class DevolucaoView {
+public class DevolucaoView {
     private final DevolucaoController devolucaoController;
     private final Scanner scanner;
 

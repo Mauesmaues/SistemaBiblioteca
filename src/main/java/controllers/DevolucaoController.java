@@ -25,9 +25,11 @@ public class DevolucaoController {
 
     public String registrarDevolucao(String usuario, String dataDevolucao) {
         LocalDate data = LocalDate.parse(dataDevolucao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
         int id = 0;
+
         if (!devolucoes.isEmpty()) { id = devolucoes.getLast().getId() + 1;}
-        if (EmprestimoController.buscarEmprestimoUser(usuario).get().getDataEmprestimo().isBefore(data)) {
+        if (EmprestimoController.buscarEmprestimoUser(usuario).get().getDataEmprestimo().isAfter(data)) {
             return "Devolucao não pode ser registrada antes da data de Emprestimo!";
         }
         if (EmprestimoController.buscarEmprestimoUser(usuario).isEmpty()) { return "Emprestimo não encontrado!";}
@@ -47,5 +49,9 @@ public class DevolucaoController {
         Devolucao devolucao = DevolucaoFactory.criarDevolucao(id, dataEmprestimo, dataPrevistaDevolucao, usuarioDevolucao, livroDevolucao, data);
         this.devolucoes.add(devolucao);
         return "Devolucao criada com sucesso!";
+    }
+
+    public List<Devolucao> listarDevolucaos() {
+        return this.devolucoes;
     }
 }

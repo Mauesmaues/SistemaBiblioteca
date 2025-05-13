@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.EmprestimoController;
 
-public final class EmprestimoView {
+public class EmprestimoView {
 
     private final EmprestimoController emprestimoController;
     private final Scanner scanner;

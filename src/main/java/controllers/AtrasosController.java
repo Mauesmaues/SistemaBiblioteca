@@ -1,26 +1,23 @@
 package controllers;
 
-import model.Atrasos;
+import model.Atraso;
 import model.Livro;
 import model.Usuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import factory.AtrasosFactory;
 
 public class AtrasosController {
-    private static List<Atrasos> atrasos;
+    private static List<Atraso> atrasos = new ArrayList<Atraso>();
 
-    public AtrasosController() {
-        atrasos = new ArrayList<Atrasos>();
-    }
+    public AtrasosController() {}
 
     public static void cadastrarAtraso(int id, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao, Usuario usuario, Livro livro,
-                   LocalDate dataDevoluca) {
-            Atrasos atraso = AtrasosFactory.criarAtrasos(id, dataEmprestimo, dataPrevistaDevolucao, usuario, livro, dataDevoluca);
+                   LocalDate dataDevolucao) {
+            Atraso atraso = AtrasosFactory.criarAtrasos(id, dataEmprestimo, dataPrevistaDevolucao, usuario, livro, dataDevolucao);
             atrasos.add(atraso);
     }
 

@@ -2,12 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import controllers.AutorController;
-import controllers.CategoriaController;
-import controllers.DevolucaoController;
-import controllers.EmprestimoController;
-import controllers.LivroController;
-import controllers.UsuarioController;
+import controllers.*;
 
 public class ViewGeral {
     private final CategoriaView categoriaView;
@@ -20,14 +15,14 @@ public class ViewGeral {
     private final RelatorioView relatorioView;
     private final Scanner scanner;    
 
-    public ViewGeral(AutorController autorController,CategoriaController categoriaController,LivroController livroController,UsuarioController usuarioController,EmprestimoController emprestimoController,DevolucaoController devolucaoController) {
+    public ViewGeral(AutorController autorController,CategoriaController categoriaController,LivroController livroController,UsuarioController usuarioController,EmprestimoController emprestimoController,DevolucaoController devolucaoController, AtrasosController atrasosController) {
         this.categoriaView = new CategoriaView(categoriaController);
         this.autorView = new AutorView(autorController);
         this.usuarioView = new UsuarioView(usuarioController);
         this.livroView = new LivroView(livroController);
         this.emprestimoView = new EmprestimoView(emprestimoController);
         this.devolucaoView = new DevolucaoView(devolucaoController);
-        this.atrasosView = new AtrasosView();
+        this.atrasosView = new AtrasosView(atrasosController);
         this.relatorioView = new RelatorioView();
         this.scanner = new Scanner(System.in);
     }

@@ -5,7 +5,7 @@ import model.Livro;
 import model.Usuario;
 
 import java.time.LocalDate;
-public class DevolucaoFactory {
+public final class DevolucaoFactory {
    
     public static Devolucao criarDevolucao(int id, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao, Usuario usuario, Livro livro, LocalDate dataDevolucao) {
         return new Devolucao(id, dataEmprestimo, dataPrevistaDevolucao, usuario, livro, dataDevolucao);

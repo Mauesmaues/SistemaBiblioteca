@@ -68,6 +68,8 @@ public class Livro implements Comparable<Livro> {
         this.categoria = categoria;
     }
 
+
+
     @Override
     public int compareTo(Livro o) {
         return this.titulo.compareTo(o.titulo);
@@ -75,7 +77,13 @@ public class Livro implements Comparable<Livro> {
 
     @Override
     public String toString() {
-        return "Livro [titulo=" + titulo + "\nautor=" + autor + "\nanoDePublicacao=" + anoDePublicacao
-                + "\nexemplaresDisponiveis=" + exemplaresDisponiveis + "\ncategoria=" + categoria + "\nid=" + id + "]";
+        return "\nLivro [" +
+                "\ntitulo:" + titulo +
+                "\nautor:" + autor +
+                "\nanoDePublicacao:" + anoDePublicacao +
+                "\nexemplaresDisponiveis:" + exemplaresDisponiveis +
+                "\ncategoria:" + categoria +
+                "\nid=" + id +
+                "\n]";
     }
 }

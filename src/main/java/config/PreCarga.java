@@ -1,4 +1,4 @@
-package org.example;
+package config;
 
 import controllers.AutorController;
 import controllers.CategoriaController;

@@ -13,60 +13,38 @@ public class UsuarioController {
     private static List<Usuario> usuarios;
 
     public UsuarioController() {
-        this.usuarios = new ArrayList<>();
+        usuarios = new ArrayList<>();
     }
 
     public String cadastrarUsuario(String nome, String telefone, String endereco, String email) {
 
-        if (nome.isEmpty()) {
-            return "Campo nome em branco";
-        }
-        if (telefone.isEmpty()) {
-            return "Campo telefone em branco";
-        }
-        if (endereco.isEmpty()) {
-            return "Campo endereco em branco";
-        }
-        if (email.isEmpty()) {
-            return "Campo email em branco";
-        }
+        if (nome.isEmpty()) { return "Campo nome em branco"; }
+        if (telefone.isEmpty()) { return "Campo telefone em branco"; }
+        if (endereco.isEmpty()) { return "Campo endereco em branco"; }
+        if (email.isEmpty()) { return "Campo email em branco"; }
 
         Usuario usuario = UsuarioFactory.criarUsuario(nome, telefone, endereco, email);
-        this.usuarios.add(usuario);
+        usuarios.add(usuario);
         return "Usuario cadastrado com sucesso";
     }
 
     public String excluirUsuario(String nome) {
-        if (nome.isEmpty()) {
-            return "Campo nome em branco";
-        }
-        if (buscarUsuario(nome).isEmpty()) {
-            return "Usuario nao encontrado";
-        }
 
-        this.usuarios.remove(buscarUsuario(nome).get());
+        if (nome.isEmpty()) { return "Campo nome em branco"; }
+        if (buscarUsuario(nome).isEmpty()) { return "Usuario nao encontrado"; }
+
+        usuarios.remove(buscarUsuario(nome).get());
         return "Usuario excluido com sucesso";
     }
 
     public String alterarUsuario(String nome, String novoNome, String telefone, String endereco, String email) {
-        if (nome.isEmpty()) {
-            return "Campo nome em branco";
-        }
-        if (novoNome.isEmpty()) {
-            return "Campo novo nome em branco";
-        }
-        if (telefone.isEmpty()) {
-            return "Campo telefone em branco";
-        }
-        if (endereco.isEmpty()) {
-            return "Campo endereco em branco";
-        }
-        if (email.isEmpty()) {
-            return "Campo email em branco";
-        }
-        if (buscarUsuario(nome).isEmpty()) {
-            return "Usuario nao encontrado!";
-        }
+
+        if (nome.isEmpty()) { return "Campo nome em branco"; }
+        if (novoNome.isEmpty()) { return "Campo novo nome em branco"; }
+        if (telefone.isEmpty()) { return "Campo telefone em branco"; }
+        if (endereco.isEmpty()) { return "Campo endereco em branco"; }
+        if (email.isEmpty()) { return "Campo email em branco"; }
+        if (buscarUsuario(nome).isEmpty()) { return "Usuario nao encontrado!"; }
 
         buscarUsuario(nome).ifPresent(usuario -> {
             usuario.setNome(novoNome);

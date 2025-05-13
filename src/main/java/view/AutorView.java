@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.AutorController;
 
-public final class AutorView {
+public class AutorView {
     private final AutorController autorController;
     private final Scanner scanner;
 

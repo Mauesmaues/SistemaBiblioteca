@@ -17,21 +17,25 @@ public class AutorController {
 
 
     public String cadastrarAutor(String nome, String dataNasc, String nacionalidade, String status) {
-        if(buscarAutor(nome).isEmpty()) {
-            Optional<Autor> autorFactory = AutorFactory.criarAutor(nome, dataNasc, nacionalidade, status.toUpperCase());
-            if(autorFactory.isPresent()){
-                autors.add(autorFactory.get());
-                return "Autor cadastrado com sucesso!";
-            }
-            return "Autor invalido!";
-        }
-        return "Autor ja existente!";
+
+        if(nome.isEmpty()){return "Campo nome em branco";}
+        if(dataNasc.isEmpty()){return "Campo Data de Nascimento em branco";}
+        if(!status.equals("ATIVO") && !status.equals("INATIVO") ){return "Status invalido!";}
+
+        LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        if(data.getYear() > LocalDate.now().getYear()){return "Ano de nascimento invalido!";}
+        if(buscarAutor(nome).isPresent()){ return "Autor ja existente!";}
+
+        Autor autorFactory = AutorFactory.criarAutor(nome, data, nacionalidade, status.toUpperCase());
+
+        autors.add(autorFactory);
+        return "Autor cadastrado com sucesso!";
     }
 
     public String excluirAutor(String nome) {
-        if(buscarAutor(nome).isEmpty()){
-            return "Autor não encontrado!";
-        }
+        if(buscarAutor(nome).isEmpty()){return "Autor não encontrado!";}
+
         autors.remove(buscarAutor(nome).get());
         return "Autor excluido com sucesso!";
     }
@@ -42,16 +46,15 @@ public class AutorController {
 
     public static Optional<Autor> buscarAutor(String nomeAutor) {
         for (Autor autor : autors) {
-            if (autor.getNome().toUpperCase().equals(nomeAutor.toUpperCase())) {
+            if (autor.getNome().toUpperCase().equalsIgnoreCase(nomeAutor)) {
                 return Optional.of(autor);
             }
         }
         return Optional.empty();
     }
 
-
     public List<String> listarAutors() {
-        return autors.stream().map(autor -> autor.getNome()).toList();
+        return autors.stream().map(Autor::getNome).toList();
     }
 
     public String alterarAutor(String nome, String novoNome, String dataNasc, String nacionalidade, String status) {

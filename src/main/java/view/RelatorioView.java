@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import controllers.RelatorioController;
+import service.RelatorioController;
 
 public class RelatorioView {
     private final Scanner scanner;

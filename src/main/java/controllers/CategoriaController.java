@@ -17,15 +17,10 @@ public class CategoriaController {
     }
 
     public String cadastrarCategoria(String nomeCategoria, String descricao) {
-        if (buscarCategoria(nomeCategoria).isPresent()) {
-            return "Categoria ja existente!";
-        }
-        if (nomeCategoria.isEmpty()) {
-            return "Campo nome em branco!";
-        }
-        if (descricao.isEmpty()) {
-            return "Campo descricao em branco!";
-        }
+
+        if (buscarCategoria(nomeCategoria).isPresent()) { return "Categoria ja existente!"; }
+        if (nomeCategoria.isEmpty()) { return "Campo nome em branco!"; }
+        if (descricao.isEmpty()) { return "Campo descricao em branco!"; }
 
         Categoria categoria = CategoriaFactory.criarCategoria(nomeCategoria, descricao);
         listaCategoria.add(categoria);
@@ -50,15 +45,10 @@ public class CategoriaController {
     }
 
     public String alterarCategoria(String nomeCategoria, String novoNome, String descricao) {
-        if (buscarCategoria(nomeCategoria).isEmpty()) {
-            return "Categoria nao encontrada!";
-        }
-        if (novoNome.isEmpty()) {
-            return "Campo nome novo em branco!";
-        }
-        if (descricao.isEmpty()) {
-            return "Campo descricao em branco!";
-        }
+
+        if (buscarCategoria(nomeCategoria).isEmpty()) { return "Categoria nao encontrada!"; }
+        if (novoNome.isEmpty()) { return "Campo nome novo em branco!"; }
+        if (descricao.isEmpty()) { return "Campo descricao em branco!"; }
 
         buscarCategoria(nomeCategoria).ifPresent(categoria -> {
             categoria.setNomeCategoria(novoNome);

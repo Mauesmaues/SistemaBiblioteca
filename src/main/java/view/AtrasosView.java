@@ -10,10 +10,12 @@ import controllers.UsuarioController;
 import model.Livro;
 import model.Usuario;
 
-public final class AtrasosView {
+public class AtrasosView {
     private final Scanner scanner;
+    private final AtrasosController atrasosController;
 
-    public AtrasosView() {
+    public AtrasosView(AtrasosController controller) {
+        this.atrasosController = controller;
         this.scanner = new Scanner(System.in);
     }
 
@@ -29,8 +31,8 @@ public final class AtrasosView {
             scanner.nextLine(); // Consumir a quebra de linha
 
             switch (opcao) {
-                case 1 -> AtrasosController.listarUsuariosComDevolucoesComAtraso();
-                case 2 -> AtrasosController.listarLivrosEntreguesEmAtraso();
+                case 1 -> System.out.println(AtrasosController.listarUsuariosComDevolucoesComAtraso());
+                case 2 -> System.out.println(AtrasosController.listarLivrosEntreguesEmAtraso());
                 case 0 -> System.out.println("Saindo do menu de atrasos...");
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }

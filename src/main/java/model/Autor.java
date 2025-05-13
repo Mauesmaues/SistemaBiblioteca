@@ -56,7 +56,7 @@ public class Autor implements Comparable<Autor> {
 
     @Override
     public String toString() {
-        return "Autor[" +
+        return "\nAutor[" +
                 "\nNome: " + nome +
                 "\nData de nascimento:'" + dataNascimento +
                 "\nnacionalidade: '" + nacionalidade +

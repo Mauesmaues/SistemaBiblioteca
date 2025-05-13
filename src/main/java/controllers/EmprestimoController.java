@@ -19,25 +19,18 @@ public class EmprestimoController {
         this.emprestimos = new ArrayList<Emprestimo>();
     }
 
-    public String cadastrarEmprestimo(
-            String usuario, String livro) {
-
+    public String cadastrarEmprestimo(String usuario, String livro) {
         int id = 0;
-        if (!emprestimos.isEmpty()) {
-            id = emprestimos.getLast().getId() + 1;
-        }
 
-        if (UsuarioController.buscarUsuario(usuario).isEmpty()) {
-            return "Usuario não encontrado!";
-        }
+        if (!emprestimos.isEmpty()) { id = emprestimos.getLast().getId() + 1; }
 
-        if (buscarEmprestimoUser(usuario).isPresent()) {
+        if (UsuarioController.buscarUsuario(usuario).isEmpty()) { return "Usuario não encontrado!"; }
+
+        if (buscarEmprestimoUser(usuario).isPresent() && buscarEmprestimoUser(usuario).get().getStatusEmprestimo() != StatusEmprestimo.DEVOLVIDO) {
             return "Usuario ja possui um emprestimo ativo!";
         }
 
-        if (LivroController.pesquisarLivroNome(livro).isEmpty()) {
-            return "Livro não encontrado!";
-        }
+        if (LivroController.pesquisarLivroNome(livro).isEmpty()) { return "Livro não encontrado!"; }
 
         if (LivroController.pesquisarLivroNome(livro).get().getExemplaresDisponiveis() == 0) {
             return "Livro indisponivel!";
@@ -55,6 +48,7 @@ public class EmprestimoController {
     }
 
     public static Optional<Emprestimo> buscarEmprestimoUser(String nomeUsuario) {
+        atualizarAtrasos();
         for (Emprestimo emprestimo : emprestimos) {
             if (emprestimo.getUsuario().getNome().equalsIgnoreCase(nomeUsuario)) {
                 return Optional.of(emprestimo);
@@ -64,6 +58,7 @@ public class EmprestimoController {
     }
 
     public static Optional<Emprestimo> buscarEmprestimoId(int id) {
+        atualizarAtrasos();
         for (Emprestimo emprestimo : emprestimos) {
             if (emprestimo.getId() == id) {
                 return Optional.of(emprestimo);
@@ -84,35 +79,4 @@ public class EmprestimoController {
             }
         }
     }
-
-    public static List<String> listarEmprestimosAtivos() {
-        atualizarAtrasos();
-        return emprestimos.stream()
-                .filter(emprestimo -> emprestimo.getStatusEmprestimo() == StatusEmprestimo.EMPRESTADO || emprestimo.getStatusEmprestimo() == StatusEmprestimo.ATRASADO)
-                .map(emprestimo -> emprestimo.getLivro().getTitulo())
-                .toList();
-    }
-
-    public static List<String> usuariosComDevolucoesAtrasadas() {
-        atualizarAtrasos();
-        return listarEmprestimos().stream()
-                .filter(emprestimo -> emprestimo.getStatusEmprestimo() == StatusEmprestimo.ATRASADO)
-                .map(emprestimo -> emprestimo.getUsuario().getNome())
-                .toList();
-    }
-
-    public static List<String> listarLivrosPopulares() {
-        return emprestimos.stream()
-                .collect(java.util.stream.Collectors.toMap(
-                        e -> e.getLivro().getTitulo(),
-                        e -> 1,
-                        Integer::sum
-                ))
-                .entrySet()
-                .stream()
-                .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
-                .map(entry -> entry.getKey() + " - " + entry.getValue() + " empréstimos")
-                .toList();
-    }
-
 }

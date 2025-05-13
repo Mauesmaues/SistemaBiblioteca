@@ -57,7 +57,12 @@ public class Usuario implements Comparable<Usuario> {
 
     @Override
     public String toString() {
-        return "Usuario [nome=" + nome + "\ntelefone=" + telefone + "\nendereco=" + endereco + "\nemail=" + email
-                + "\ndataCadastro=" + dataCadastro + "]";
+        return "\nUsuario [" +
+                "\nnome:" + nome +
+                "\ntelefone:" + telefone +
+                "\nendereco:" + endereco +
+                "\nemail:" + email +
+                "\ndataCadastro:" + dataCadastro +
+                "\n]";
     }
 }

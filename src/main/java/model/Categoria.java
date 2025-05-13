@@ -33,7 +33,10 @@ public class Categoria implements Comparable<Categoria> {
 
     @Override
     public String toString() {
-        return "\nCategoria [nomeCategoria=" + nomeCategoria + "\ndescricaoCategoria=" + descricaoCategoria + "]";
+        return "\nCategoria [" +
+                "\nnomeCategoria:" + nomeCategoria +
+                "\ndescricaoCategoria:" + descricaoCategoria +
+                "\n]";
     }
 
 }

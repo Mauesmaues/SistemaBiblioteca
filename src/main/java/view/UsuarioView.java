@@ -1,10 +1,12 @@
 package view;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 import controllers.UsuarioController;
+import model.Usuario;
 
-public final class UsuarioView {
+public class UsuarioView {
     private final UsuarioController usuarioController;
     private final Scanner scanner;
 
@@ -26,7 +28,7 @@ public final class UsuarioView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> cadastrarUsuario();
@@ -74,9 +76,8 @@ public final class UsuarioView {
     }
 
     private void buscarUsuario() {
-        System.out.print("Digite o nome do usuário para buscar: ");
         String nome = scanner.nextLine();
-        var usuario = usuarioController.buscarUsuario(nome);
+        Optional<Usuario> usuario = usuarioController.buscarUsuario(nome);
         if (usuario.isPresent()) {
             System.out.println("Usuário encontrado: " + usuario.get());
         } else {

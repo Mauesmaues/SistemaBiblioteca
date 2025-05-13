@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.CategoriaController;
 
-public final class CategoriaView {
+public class CategoriaView {
 
     private final CategoriaController categoriaController;
     private final Scanner scanner;
