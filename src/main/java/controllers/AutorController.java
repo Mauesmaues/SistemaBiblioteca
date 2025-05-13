@@ -20,7 +20,7 @@ public class AutorController {
 
         if(nome.isEmpty()){return "Campo nome em branco";}
         if(dataNasc.isEmpty()){return "Campo Data de Nascimento em branco";}
-        if(!status.equals("ATIVO") && !status.equals("INATIVO") ){return "Status invalido!";}
+        if(!status.equalsIgnoreCase("ATIVO") && !status.equalsIgnoreCase("INATIVO") ){return "Status invalido!";}
 
         LocalDate data = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
@@ -53,8 +53,8 @@ public class AutorController {
         return Optional.empty();
     }
 
-    public List<String> listarAutors() {
-        return autors.stream().map(Autor::getNome).toList();
+    public List<Autor> listarAutors() {
+        return autors;
     }
 
     public String alterarAutor(String nome, String novoNome, String dataNasc, String nacionalidade, String status) {
