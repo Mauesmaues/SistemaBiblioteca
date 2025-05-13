@@ -34,19 +34,19 @@ public class DevolucaoController {
         }
         if (EmprestimoController.buscarEmprestimoUser(usuario).isEmpty()) { return "Emprestimo não encontrado!";}
 
+
         Usuario usuarioDevolucao = UsuarioController.buscarUsuario(usuario).get();
         Livro livroDevolucao = EmprestimoController.buscarEmprestimoUser(usuario).get().getLivro(); 
         LivroController.pesquisarLivroNome(livroDevolucao.getTitulo()).get().setExemplaresDisponiveis(livroDevolucao.getExemplaresDisponiveis() + 1);
         LocalDate dataEmprestimo = EmprestimoController.buscarEmprestimoUser(usuario).get().getDataEmprestimo();
         LocalDate dataPrevistaDevolucao = EmprestimoController.buscarEmprestimoUser(usuario).get().getDataPrevistaDevolucao();
-        EmprestimoController.buscarEmprestimoUser(usuario).get().setStatusEmprestimo(StatusEmprestimo.valueOf("DEVOLVIDO"));
 
         if (dataPrevistaDevolucao.isBefore(data)) {
-            EmprestimoController.buscarEmprestimoUser(usuario).get().setStatusEmprestimo(StatusEmprestimo.valueOf("ATRASADO"));
             AtrasosController.cadastrarAtraso(id, dataEmprestimo, dataPrevistaDevolucao, usuarioDevolucao, livroDevolucao, data);
         }
 
         Devolucao devolucao = DevolucaoFactory.criarDevolucao(id, dataEmprestimo, dataPrevistaDevolucao, usuarioDevolucao, livroDevolucao, data);
+        EmprestimoController.buscarEmprestimoUser(usuario).get().setStatusEmprestimo(StatusEmprestimo.valueOf("DEVOLVIDO"));
         this.devolucoes.add(devolucao);
         return "Devolucao criada com sucesso!";
     }
