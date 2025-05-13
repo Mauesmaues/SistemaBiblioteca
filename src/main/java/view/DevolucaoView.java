@@ -27,7 +27,7 @@ public class DevolucaoView {
                 case 1 -> {
                     System.out.print("Digite o nome do usuário: ");
                     String usuario = scanner.nextLine();
-                    System.out.print("Digite a data de devolução (formato YYYY-MM-DD): ");
+                    System.out.print("Digite a data de devolução (formato dd/MM/yyyy): ");
                     String dataDevolucao = scanner.nextLine();
                     System.out.println(devolucaoController.registrarDevolucao(usuario, dataDevolucao));
                 }
