@@ -73,13 +73,14 @@ public class Emprestimo implements Comparable<Emprestimo> {
 
     @Override
     public String toString() {
-        return "\nEmprestimo [" +
-                "\nid:" + id +
-                "\ndataEmprestimo:" + dataEmprestimo +
-                "\ndataPrevistaDevolucao:" + dataPrevistaDevolucao +
-                "\nusuario:" + usuario +
-                "\nlivro:" + livro +
-                "\n]";
+        return "\nEmprestimo ["
+                + "\nid:" + id
+                + "\ndataEmprestimo:" + dataEmprestimo
+                + "\ndataPrevistaDevolucao:" + dataPrevistaDevolucao
+                + "\nusuario:" + usuario
+                + "\nlivro:" + livro
+                + "\nStatus do Emprestimo: " + statusEmprestimo
+                + "\n]";
     }
 
     @Override
