@@ -2,9 +2,15 @@ package view;
 
 import java.util.Scanner;
 
-import controllers.*;
+import controllers.AutorController;
+import controllers.CategoriaController;
+import controllers.DevolucaoController;
+import controllers.EmprestimoController;
+import controllers.LivroController;
+import controllers.UsuarioController;
 
 public class ViewGeral {
+
     private final CategoriaView categoriaView;
     private final AutorView autorView;
     private final UsuarioView usuarioView;
@@ -13,9 +19,9 @@ public class ViewGeral {
     private final DevolucaoView devolucaoView;
     private final AtrasosView atrasosView;
     private final RelatorioView relatorioView;
-    private final Scanner scanner;    
+    private final Scanner scanner;
 
-    public ViewGeral(AutorController autorController,CategoriaController categoriaController,LivroController livroController,UsuarioController usuarioController,EmprestimoController emprestimoController,DevolucaoController devolucaoController) {
+    public ViewGeral(AutorController autorController, CategoriaController categoriaController, LivroController livroController, UsuarioController usuarioController, EmprestimoController emprestimoController, DevolucaoController devolucaoController) {
         this.categoriaView = new CategoriaView(categoriaController);
         this.autorView = new AutorView(autorController);
         this.usuarioView = new UsuarioView(usuarioController);
@@ -42,19 +48,29 @@ public class ViewGeral {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
-                case 1 -> categoriaView.exibirMenu();
-                case 2 -> autorView.exibirMenu();
-                case 3 -> usuarioView.exibirMenu();
-                case 4 -> livroView.exibirMenu();
-                case 5 -> emprestimoView.exibirMenu();
-                case 6 -> devolucaoView.exibirMenu();
-                case 7 -> atrasosView.exibirMenu();
-                case 8 -> relatorioView.exibirMenu();
-                case 0 -> System.out.println("Saindo do sistema...");
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                case 1 ->
+                    categoriaView.exibirMenu();
+                case 2 ->
+                    autorView.exibirMenu();
+                case 3 ->
+                    usuarioView.exibirMenu();
+                case 4 ->
+                    livroView.exibirMenu();
+                case 5 ->
+                    emprestimoView.exibirMenu();
+                case 6 ->
+                    devolucaoView.exibirMenu();
+                case 7 ->
+                    atrasosView.exibirMenu();
+                case 8 ->
+                    relatorioView.exibirMenu();
+                case 0 ->
+                    System.out.println("Saindo do sistema...");
+                default ->
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
     }

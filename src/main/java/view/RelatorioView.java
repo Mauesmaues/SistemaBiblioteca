@@ -5,6 +5,7 @@ import java.util.Scanner;
 import service.Relatorio;
 
 public class RelatorioView {
+
     private final Scanner scanner;
 
     public RelatorioView() {
@@ -21,14 +22,19 @@ public class RelatorioView {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            scanner.nextLine();
 
             switch (opcao) {
-                case 1 -> listarEmprestimosAtivos();
-                case 2 -> listarUsuariosComDevolucoesAtrasadas();
-                case 3 -> listarLivrosPopulares();
-                case 0 -> System.out.println("Saindo do menu de relatórios...");
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                case 1 ->
+                    listarEmprestimosAtivos();
+                case 2 ->
+                    listarUsuariosComDevolucoesAtrasadas();
+                case 3 ->
+                    listarLivrosPopulares();
+                case 0 ->
+                    System.out.println("Saindo do menu de relatórios...");
+                default ->
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
     }
